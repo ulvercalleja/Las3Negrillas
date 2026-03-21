@@ -4,17 +4,17 @@
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
- 
-  <!-- Fonts -->
+
+  <!-- Fuentes -->
   <link
     href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
     rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
- 
+
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="stylesheet" href="styles.css" />
   <script>
     tailwind.config = {
       darkMode: "class",
@@ -84,22 +84,12 @@
       },
     }
   </script>
- 
-  <style>
-    .material-symbols-outlined {
-      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-    }
- 
-    .grainy-overlay {
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-    }
-  </style>
+
 </head>
 
 <body
   class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
-  <!-- Top Navigation Bar -->
+  <!-- Barra Superior Navegacion -->
   <nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-stone-900/80 backdrop-blur-md">
     <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
       <div class="font-serif text-2xl italic font-semibold text-[#1f1b18] dark:text-[#fff8f5] tracking-tight">
@@ -115,7 +105,7 @@
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
           href="#">Galería</a>
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
-          href="#">Contacto</a>
+          href="#">Disponibilidad</a>
       </div>
       <button
         class="bg-primary text-on-primary px-8 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:scale-[0.99] transition-all active:opacity-80 shadow-[0_10px_30px_-15px_rgba(112,61,35,0.3)]">
@@ -123,7 +113,7 @@
       </button>
     </div>
   </nav>
-  <!-- Hero Section -->
+  <!-- Hero Seccion -->
   <header class="relative min-h-screen flex items-center pt-20">
     <div class="absolute inset-0 z-0 overflow-hidden">
       <img class="w-full h-full object-cover scale-105" data-alt="Old stone rural house with ivy and warm sunset light"
@@ -155,7 +145,7 @@
       </div>
     </div>
   </header>
-  <!-- Rooms Section -->
+  <!-- Habitaciones Seccion -->
   <section class="py-32 px-8 bg-surface">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
@@ -176,7 +166,8 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
 
           </div>
           <h3 class="font-headline text-2xl mb-3">La Rústica con Encanto</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Cuarto rústico acogedor con dos camas y ambiente cálido y relajante.</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Cuarto rústico acogedor con dos camas y
+            ambiente cálido y relajante.</p>
           <button
             class="text-primary font-label text-xs tracking-widest uppercase flex items-center group-hover:translate-x-2 transition-transform">
             Detail <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
@@ -189,7 +180,8 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
               data-alt="Habitación rústica con cama doble, madera y luz cálida." src="fotos/dormitorio2.jpg" />
           </div>
           <h3 class="font-headline text-2xl mb-3">La Doble Acogedora</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Habitación rústica con cama doble, madera y luz cálida acogedora y suave.</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Habitación rústica con cama doble, madera y
+            luz cálida acogedora y suave.</p>
           <button
             class="text-primary font-label text-xs tracking-widest uppercase flex items-center group-hover:translate-x-2 transition-transform">
             Detail <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
@@ -212,139 +204,262 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
       </div>
     </div>
   </section>
-  <!-- Amenities Section -->
+  <!-- Servicios Seccion -->
   <section class="py-32 bg-surface-container-low relative overflow-hidden">
     <div class="absolute inset-0 grainy-overlay"></div>
     <div class="max-w-7xl mx-auto px-8 relative z-10">
       <div class="text-center max-w-xl mx-auto mb-20">
-        <h2 class="font-headline text-5xl italic mb-6">Thoughtful Essentials</h2>
+        <h2 class="font-headline text-5xl italic mb-6">Servicios</h2>
         <div class="w-16 h-px bg-primary mx-auto mb-6"></div>
-        <p class="text-on-surface-variant font-body">Simplicity is the ultimate luxury. We provide everything you need
-          to disconnect and recalibrate.</p>
+        <p class="text-on-surface-variant font-body">Detalles pensados para que desconectes del ritmo diario y disfrutes
+          de la calma del entorno, con el confort y la autenticidad de una casa berciana.</p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20">
         <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
           <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="fireplace">fireplace</span>
-          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Grand Fireplace</h4>
-          <p class="text-xs text-on-surface-variant">Oak-fed fires daily</p>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Chimenea tradicional</h4>
+          <p class="text-xs text-on-surface-variant">Fuego de leña para las noches más acogedoras</p>
         </div>
         <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="park">park</span>
-          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Heritage Gardens</h4>
-          <p class="text-xs text-on-surface-variant">2-acres of wild landscape</p>
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="grass">grass</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Jardín natural compartido</h4>
+          <p class="text-xs text-on-surface-variant">Espacios exteriores rodeados de naturaleza y calma</p>
         </div>
         <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
           <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="skillet">skillet</span>
-          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Artisan Kitchen</h4>
-          <p class="text-xs text-on-surface-variant">Farm-to-table breakfast</p>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Cocina de leña y carbón</h4>
+          <p class="text-xs text-on-surface-variant">Sabores tradicionales elaborados con fuego lento y productos
+            locales</p>
         </div>
         <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="wifi_off">wifi_off</span>
-          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Digital Detach</h4>
-          <p class="text-xs text-on-surface-variant">Intentional quiet zones</p>
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="wifi">wifi</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">WiFi disponible</h4>
+          <p class="text-xs text-on-surface-variant">Conexión a internet para cuando la necesites.</p>
+        </div>
+        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="tv">tv</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Televisión</h4>
+          <p class="text-xs text-on-surface-variant">Diversión y entretenimiento para disfrutar en familia.</p>
+        </div>
+        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="pets">pets</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Mascotas</h4>
+          <p class="text-xs text-on-surface-variant">Se admiten bajo petición. Gratis.</p>
+        </div>
+        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+            data-icon="local_parking">local_parking</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Estacionamiento</h4>
+          <p class="text-xs text-on-surface-variant">Espacio de estacionamiento gratuito disponible para huéspedes.</p>
+        </div>
+        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="local_parking">shower</span>
+          <h4 class="font-label text-xs tracking-widest uppercase mb-2">Baño completo</h4>
+          <p class="text-xs text-on-surface-variant">Equipado con ducha, comodidades y todo lo necesario</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- Heritage Gallery (Signature Component) -->
+  <!-- El entorno -->
   <section class="py-32 px-8 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <h2 class="font-headline text-5xl italic mb-16">The Archive Gallery</h2>
+      <h2 class="font-headline text-5xl italic mb-16">El entorno</h2>
       <div class="grid grid-cols-12 gap-8 items-start">
         <div class="col-span-12 md:col-span-7">
           <div class="rounded-none overflow-hidden aspect-video shadow-2xl">
-            <img class="w-full h-full object-cover" data-alt="Wide mountain range landscape at dawn"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAitJZwECsliYIefN5WJZDPS1XKK4efuONsm4hnxQ4l_a6A-2qlmNX3pf5QhrD27iUsVkNViyU_kxzlF2Z-RexjT8Mnjx69vD1M67WVpcM_eRlr2xTCaSqb5ZieT-qUn19MTlRX1hR6p_gThIBmofJ1NEFMdAYVlO1v4dRHrm8Z_mKrN6fNrPGnfDRpXFypqNB3hVXYCRwl6hgX_eLmNQIiagPzplE_mpOGqDsmK3A3FPNeUYiTxje_PQ68XJeK-HHEd8HiX9WT9Ir0" />
+            <img class="w-full h-full object-cover" data-alt="Rio que atraviesa el pueblo de Toral de Merayo"
+              src="fotos/rio_toral.jpg" />
           </div>
           <div class="mt-8 flex justify-between items-start">
-            <p class="font-headline italic text-2xl text-on-surface-variant">Vista del Valle</p>
-            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">The mist rising over the valley as
-              seen from the eastern terrace at 6:00 AM.</p>
+            <p class="font-headline italic text-2xl text-on-surface-variant">Vista del río</p>
+            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">El río que atraviesa el pueblo, un
+              rincón tranquilo donde el sonido del agua acompaña el paisaje.</p>
           </div>
         </div>
         <div class="col-span-12 md:col-span-5 md:pt-32">
-          <div class="rounded-xl overflow-hidden aspect-[3/4] shadow-xl rotate-2">
-            <img class="w-full h-full object-cover" data-alt="Close up of a ceramic tea cup on a wood table"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMh6DUxjWm7HMCBUy-JPG_LBXp1AKThL7TqmvMC5cGoVy8eHOUOzMgNtJwACa-7d-09xo3Py2n3GNNi9nGcTpPdy2DEVHXB5HQLZEYVyCB4WHhnMYHQ8DDJ52vrFmKM_SVJ7tq4Sx1vUcUiw5f7aA3Ql0zIS__Dr1iPOegJpff84Pg7SY4T-SxGWJqxze5_NVzO02Ed5jhlm2eICXN225VpUM42SwAO52iyQ4hqwxHeQMTugr8N5wtLfXrgdNS6VLYKbmHRcZj3CU-" />
+          <div class="rounded-xl overflow-hidden aspect-[4/4] shadow-xl rotate-2">
+            <img class="w-full h-full object-cover" data-alt="Vista del pueblo de Toral de Merayo"
+              src="fotos/vista_pueblo.jpg" />
           </div>
         </div>
         <div class="col-span-12 md:col-span-4 -mt-16">
           <div class="rounded-full overflow-hidden aspect-square border-8 border-surface-container-high shadow-inner">
-            <img class="w-full h-full object-cover" data-alt="Stone detail of an ancient wall with moss"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCeK_qAt1IMqjF832OUmAdgP-BAsFNZxs0Cxl0ouMfyn3oeSqOWuGzZ-iAQ279q7Oue6zwBwRFyz_pVLs5iPVTyNIASvh-fISPsjFTr1uRRcAqKg4sneaTvRUnCeyf4OW4vapVq17FbPFV9oV-SZHyuP8cJ-yXj1aQEyAWWZzTTFwI-eQjWQOrkrD4Whlky69AIW0fATyXc1GeqAlmC-omfgCaSiQfMjvRK2td0UyS1lT5t8C-XnNe8QvIN44RBI-M0k1qBIMNP6Gr" />
+            <img class="w-full h-full object-cover" data-alt="Vista del Pajariel" src="fotos/vista_pajariel.jpg" />
           </div>
         </div>
-        <div class="col-span-12 md:col-span-8 flex justify-center items-center">
-          <div class="bg-primary-container p-12 md:p-24 rounded-tl-[100px] text-on-primary-container relative">
-            <span
-              class="material-symbols-outlined text-6xl absolute -top-8 -left-8 bg-surface p-4 rounded-full text-primary"
-              data-icon="auto_stories">auto_stories</span>
-            <blockquote class="font-headline italic text-3xl leading-relaxed mb-8">
-              "The stone remembers the stories of those who walked these halls centuries before us."
-            </blockquote>
-            <cite class="font-label text-xs tracking-widest uppercase opacity-80">— Mariana Silva, Custodian</cite>
+        <div class="col-span-12 md:col-span-7">
+          <div class="rounded-none overflow-hidden aspect-video shadow-2xl">
+            <img class="w-full h-full object-cover" data-alt="Iglesia de El Salvador al atardecer"
+              src="fotos/iglesia_merayo.jpg" />
+          </div>
+          <div class="mt-8 flex justify-between items-start">
+            <p class="font-headline italic text-2xl text-on-surface-variant">Iglesia de El Salvador</p>
+            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">La iglesia de El Salvador al
+              atardecer, cuando la luz dorada resalta su piedra y envuelve el entorno en calma.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Booking Section -->
-  <section class="py-32 px-8 bg-surface-dim">
-    <div
-      class="max-w-5xl mx-auto bg-surface-container-lowest p-12 md:p-24 rounded-xl shadow-[0_40px_100px_-30px_rgba(31,27,24,0.08)]">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
-        <div>
-          <h2 class="font-headline text-5xl mb-8 italic">Begin Your Journey</h2>
-          <p class="text-on-surface-variant mb-12">Reservations are open for the upcoming season. For special events or
-            private retreats, please contact us directly.</p>
-          <div class="space-y-6">
-            <div class="flex items-center gap-4 text-on-surface">
-              <span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
-              <span class="font-body">stays@theheritagearchive.com</span>
+  <!-- Disponibilidad -->
+  <section class="py-32 px-8 bg-background relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-headline text-5xl italic text-on-surface mb-4">Comprueba las fechas</h2>
+        <p class="text-on-surface-variant font-body">Consulta la disponibilidad y planifica tu escapada al Bierzo.
+        </p>
+      </div>
+      <div class="flex justify-center items-start">
+        <!-- Calendario -->
+        <div
+          class="w-full max-w-4xl bg-surface-container-low p-8 md:p-12 rounded-xl shadow-sm border border-outline-variant/30">
+          <div class="flex items-center justify-between mb-8">
+            <h4 class="font-headline text-2xl italic">Abril 2026</h4>
+            <div class="flex gap-4">
+              <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span
+                  class="material-symbols-outlined">chevron_left</span></button>
+              <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span
+                  class="material-symbols-outlined">chevron_right</span></button>
             </div>
-            <div class="flex items-center gap-4 text-on-surface">
-              <span class="material-symbols-outlined text-primary" data-icon="call">call</span>
-              <span class="font-body">+34 900 123 456</span>
+          </div>
+          <div class="grid grid-cols-7 mb-4">
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Lun</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Mar</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Mie</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Jue</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Vie</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Sab</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Dom</div>
+          </div>
+          <div class="grid grid-cols-7 gap-2">
+            <!-- Mes previo (Placeholder) -->
+            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">
+              30</div>
+            <!-- Mes actual -->
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              1</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              2</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              3</div>
+            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
+              4</div>
+            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
+              5</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              6</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              7</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              8</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              9</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              10</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              11</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm bg-primary text-on-primary rounded-lg shadow-md ring-2 ring-primary ring-offset-2 ring-offset-surface-container-low font-bold">
+              12</div>
+            <div class="aspect-square flex items-center justify-center text-sm bg-primary/20 text-primary font-medium">
+              13</div>
+            <div class="aspect-square flex items-center justify-center text-sm bg-primary/20 text-primary font-medium">
+              14</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm bg-primary text-on-primary rounded-lg shadow-md ring-2 ring-primary ring-offset-2 ring-offset-surface-container-low font-bold">
+              15</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              16</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              17</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              18</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              19</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              20</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              21</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              22</div>
+            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
+              23</div>
+            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
+              24</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              25</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              26</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              27</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              28</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              29</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              30</div>
+            <div
+              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
+              31</div>
+            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">1
             </div>
+            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">2
+            </div>
+            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">3
+            </div>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-8 justify-center border-t border-outline-variant/30 pt-6">
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 rounded bg-surface-container border border-outline-variant/30"></div>
+              <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Disponible</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-4 h-4 rounded bg-transparent border border-outline-variant/30 relative overflow-hidden">
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-full h-px bg-on-surface-variant/30 -rotate-45"></div>
+                </div>
+              </div>
+              <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60">Reservado</span>
+            </div>
+            
+          </div>
+          <!-- Info -->
+          <div
+            class="mt-8 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
+            <span class="material-symbols-outlined text-primary text-base inline-block align-middle mr-2"
+              data-icon="info">info</span>
+            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta sobre fechas o reservas, no dudes en contactarnos.
           </div>
         </div>
-        <form class="space-y-8">
-          <div class="space-y-2">
-            <label class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant ml-1">Your
-              Name</label>
-            <input
-              class="w-full bg-surface-container border-none rounded-lg p-4 focus:ring-1 focus:ring-primary/20 placeholder:text-on-surface-variant/40"
-              placeholder="Full name" type="text" />
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-2">
-              <label
-                class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant ml-1">Arrival</label>
-              <input class="w-full bg-surface-container border-none rounded-lg p-4 text-sm text-on-surface-variant/60"
-                type="date" />
-            </div>
-            <div class="space-y-2">
-              <label
-                class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant ml-1">Guests</label>
-              <select class="w-full bg-surface-container border-none rounded-lg p-4 text-sm text-on-surface-variant/60">
-                <option>2 Guests</option>
-                <option>3 Guests</option>
-                <option>4 Guests</option>
-              </select>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <label
-              class="font-label text-[10px] tracking-[0.2em] uppercase text-on-surface-variant ml-1">Message</label>
-            <textarea
-              class="w-full bg-surface-container border-none rounded-lg p-4 focus:ring-1 focus:ring-primary/20 placeholder:text-on-surface-variant/40"
-              placeholder="Special requirements..." rows="4"></textarea>
-          </div>
-          <button
-            class="w-full bg-primary text-on-primary py-5 rounded-lg font-label text-xs tracking-widest uppercase hover:opacity-90 transition-all shadow-lg">
-            Check Availability
-          </button>
-        </form>
       </div>
     </div>
   </section>
@@ -352,28 +467,29 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
   <footer class="w-full py-16 px-8 mt-20 bg-[#fbf2ed] dark:bg-stone-950 text-[#703d23] dark:text-[#d7c2ba]">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
       <div>
-        <div class="font-serif text-xl italic text-[#1f1b18] dark:text-[#fff8f5] mb-6">The Heritage Archive</div>
+        <div class="font-serif text-xl italic text-[#1f1b18] dark:text-[#fff8f5] mb-6">Las 3 negrillas</div>
         <p class="font-sans text-sm leading-relaxed Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 max-w-xs">
-          Preserving the architectural heritage of the Cantabrian mountains through sustainable hospitality.
+          Una casa rural en el corazón del Bierzo, donde la calma, la naturaleza y la tradición crean una experiencia
+          única.
         </p>
       </div>
       <div class="flex flex-col space-y-4">
-        <h5 class="font-serif text-2xl Newsreader mb-2">Connect</h5>
+        <h5 class="font-serif text-2xl Newsreader mb-2">Síguenos</h5>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
           href="#">Instagram</a>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
           href="#">Facebook</a>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
-          href="#">Privacy Policy</a>
+          href="#">Política de privacidad</a>
       </div>
       <div class="flex flex-col justify-between">
         <div>
-          <h5 class="font-serif text-2xl Newsreader mb-2">Location</h5>
-          <p class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60">Calle de los Manantiales,
-            12<br />39001 Cantabria, Spain</p>
+          <h5 class="font-serif text-2xl Newsreader mb-2">Ubicación</h5>
+          <p class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60">Calle de la barrera de arriba,
+            3<br />24448, Toral de Merayo, Ponferrada, Spain</p>
         </div>
         <div class="pt-8 md:pt-0 font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60">
-          © 2024 The Heritage Archive. All rights reserved.
+          © 2026 Las 3 negrillas. Todos los derechos reservados.
         </div>
       </div>
     </div>
