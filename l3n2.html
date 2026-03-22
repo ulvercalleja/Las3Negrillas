@@ -97,24 +97,30 @@
       </div>
       <div class="hidden md:flex items-center space-x-12">
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#703d23] dark:text-[#8c5438] border-b border-[#703d23]/20 pb-1"
-          href="#">Home</a>
+          href="#home">Home</a>
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
-          href="#">Habitaciones</a>
+          href="#habitaciones">Habitaciones</a>
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
-          href="#">Servicios</a>
+          href="#servicios">Servicios</a>
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
-          href="#">Galería</a>
+          href="#entorno">Entorno</a>
         <a class="font-sans tracking-[0.05em] uppercase text-xs Manrope text-[#1f1b18]/70 dark:text-[#fff8f5]/70 hover:text-[#703d23] transition-colors"
-          href="#">Disponibilidad</a>
+          href="#disponibilidad">Disponibilidad</a>
       </div>
-      <button
-        class="bg-primary text-on-primary px-8 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:scale-[0.99] transition-all active:opacity-80 shadow-[0_10px_30px_-15px_rgba(112,61,35,0.3)]">
-        Reservar
-      </button>
+      <a href="https://www.booking.com/hotel/es/las-tres-negrillas.es.html?aid=311090&label=las-tres-negrillas-A2GlqsgRMoopvzpQxulz
+      tgS528910162017%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg%3Afi%3Atikwd-2406558630679%3Alp9061032%3Ali%3Adec%3Adm%3Appccp%3DUmFuZG9tS
+      VYkc2RlIyh9YcGt_tphEo8pawEozW2KQ80&sid=7336c42bb1785f386aae24e90a8e479c&dest_id=-404429&dest_type=city&dist=0&group_adults=2&
+      group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&s
+      repoch=1774140491&srpvid=c74e059fb6d10420&type=total&ucfs=1&" target="_blank">
+        <button
+          class="bg-primary text-on-primary px-8 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:scale-[0.99] transition-all active:opacity-80 shadow-[0_10px_30px_-15px_rgba(112,61,35,0.3)]">
+          Reservar
+        </button>
+      </a>
     </div>
   </nav>
   <!-- Hero Seccion -->
-  <header class="relative min-h-screen flex items-center pt-20">
+  <header id="home" class="relative min-h-screen flex items-center pt-20">
     <div class="absolute inset-0 z-0 overflow-hidden">
       <img class="w-full h-full object-cover scale-105" data-alt="Old stone rural house with ivy and warm sunset light"
         src="fotos/foto_general.jpg" />
@@ -133,20 +139,20 @@
           Bierzo. Rodeado de montañas y la calma auténtica de Toral de Merayo.
         </p>
         <div class="flex flex-wrap gap-6">
-          <button
+          <a href="#disponibilidad"
             class="bg-primary text-on-primary px-10 py-4 rounded-lg font-label text-sm tracking-widest uppercase hover:bg-primary-container transition-all">
             Ver disponibilidad
-          </button>
-          <button
+          </a>
+          <a href="#entorno"
             class="bg-white/90 text-primary px-10 py-4 rounded-lg font-label text-sm tracking-widest uppercase hover:bg-white transition-all">
             Descubrir el entorno
-          </button>
+          </a>
         </div>
       </div>
     </div>
   </header>
   <!-- Habitaciones Seccion -->
-  <section class="py-32 px-8 bg-surface">
+  <section id="habitaciones" class="py-32 px-8 bg-surface">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
         <div class="max-w-xl">
@@ -205,7 +211,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
     </div>
   </section>
   <!-- Servicios Seccion -->
-  <section class="py-32 bg-surface-container-low relative overflow-hidden">
+  <section id="servicios" class="py-32 bg-surface-container-low relative overflow-hidden">
     <div class="absolute inset-0 grainy-overlay"></div>
     <div class="max-w-7xl mx-auto px-8 relative z-10">
       <div class="text-center max-w-xl mx-auto mb-20">
@@ -261,7 +267,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
     </div>
   </section>
   <!-- El entorno -->
-  <section class="py-32 px-8 overflow-hidden">
+  <section id="entorno" class="py-32 px-8 overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <h2 class="font-headline text-5xl italic mb-16">El entorno</h2>
       <div class="grid grid-cols-12 gap-8 items-start">
@@ -302,7 +308,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
     </div>
   </section>
   <!-- Disponibilidad -->
-  <section class="py-32 px-8 bg-background relative overflow-hidden">
+  <section id="disponibilidad" class="py-32 px-8 bg-background relative overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
         <h2 class="font-headline text-5xl italic text-on-surface mb-4">Comprueba las fechas</h2>
@@ -450,14 +456,15 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
               </div>
               <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60">Reservado</span>
             </div>
-            
+
           </div>
           <!-- Info -->
           <div
             class="mt-8 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
             <span class="material-symbols-outlined text-primary text-base inline-block align-middle mr-2"
               data-icon="info">info</span>
-            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta sobre fechas o reservas, no dudes en contactarnos.
+            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta sobre fechas o reservas,
+            no dudes en contactarnos.
           </div>
         </div>
       </div>
@@ -494,6 +501,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
       </div>
     </div>
   </footer>
+  <script src="main.js"></script>
 </body>
 
 </html>

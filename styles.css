@@ -8,3 +8,7 @@
   background-image: url("data:image/svg+xml,...");
   opacity: 0.03;
 }
+
+html { /* El desplazamiento scrolleando se vuelve mas suave */
+  scroll-behavior: smooth;
+}
