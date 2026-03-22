@@ -12,3 +12,18 @@
 html { /* El desplazamiento scrolleando se vuelve mas suave */
   scroll-behavior: smooth;
 }
+
+.nav-active {
+  color: #703d23;
+  border-bottom: 1px solid rgba(112, 61, 35, 0.2);
+  padding-bottom: 0.25rem;
+}
+
+.nav-inactive {
+  color: rgba(31, 27, 24, 0.7);
+  transition: color 0.2s;
+}
+
+.nav-inactive:hover {
+  color: #703d23;
+}
