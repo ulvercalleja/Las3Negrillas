@@ -1,10 +1,11 @@
 /* styles.css */
 
-.material-symbols-outlined {
+
+.material-symbols-outlined { /* Ajusta el grosor y estilo visual de los iconos de Material Symbols */
   font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
-
-.grainy-overlay {
+ 
+.grainy-overlay { /* Añade una textura granulada sutil sobre las secciones */
   background-image: url("data:image/svg+xml,...");
   opacity: 0.03;
 }
@@ -13,17 +14,17 @@ html { /* El desplazamiento scrolleando se vuelve mas suave */
   scroll-behavior: smooth;
 }
 
-.nav-active {
+.nav-active { /* Enlace del nav activo: resaltado en marrón con subrayado */
   color: #703d23;
   border-bottom: 1px solid rgba(112, 61, 35, 0.2);
   padding-bottom: 0.25rem;
 }
 
-.nav-inactive {
+.nav-inactive { /* Enlace del nav inactivo: gris semitransparente */
   color: rgba(31, 27, 24, 0.7);
   transition: color 0.2s;
 }
 
-.nav-inactive:hover {
+.nav-inactive:hover { /* Al pasar el ratón por un enlace inactivo, se vuelve marrón */
   color: #703d23;
 }
