@@ -96,8 +96,7 @@
         Las 3 negrillas
       </div>
       <div class="hidden md:flex items-center space-x-12">
-        <a class="nav-link nav-active font-sans tracking-[0.05em] uppercase text-xs Manrope"
-          href="#home">Home</a>
+        <a class="nav-link nav-active font-sans tracking-[0.05em] uppercase text-xs Manrope" href="#home">Home</a>
         <a class="nav-link nav-inactive font-sans tracking-[0.05em] uppercase text-xs Manrope"
           href="#habitaciones">Habitaciones</a>
         <a class="nav-link nav-inactive font-sans tracking-[0.05em] uppercase text-xs Manrope"
@@ -267,10 +266,20 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
     <div class="max-w-7xl mx-auto">
       <h2 class="font-headline text-5xl italic mb-16">El entorno</h2>
       <div class="grid grid-cols-12 gap-8 items-start">
+
+        <!-- Foto 1: Río (grande, 7 columnas) -->
         <div class="col-span-12 md:col-span-7">
-          <div class="rounded-none overflow-hidden aspect-video shadow-2xl">
-            <img class="w-full h-full object-cover" data-alt="Rio que atraviesa el pueblo de Toral de Merayo"
-              src="fotos/rio_toral.jpg" />
+          <div class="photo-card rounded-none overflow-hidden aspect-video shadow-2xl cursor-pointer"
+            data-src="fotos/rio_toral.jpg" data-caption="Vista del río"
+            data-desc="El río que atraviesa el pueblo, un rincón tranquilo donde el sonido del agua acompaña el paisaje.">
+            <img class="w-full h-full object-cover" src="fotos/rio_toral.jpg"
+              alt="Rio que atraviesa el pueblo de Toral de Merayo" />
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">Vista del río</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
           </div>
           <div class="mt-8 flex justify-between items-start">
             <p class="font-headline italic text-2xl text-on-surface-variant">Vista del río</p>
@@ -278,21 +287,52 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
               rincón tranquilo donde el sonido del agua acompaña el paisaje.</p>
           </div>
         </div>
+
+        <!-- Foto 2: Vista del pueblo (5 columnas, rotada) -->
         <div class="col-span-12 md:col-span-5 md:pt-32">
-          <div class="rounded-xl overflow-hidden aspect-[4/4] shadow-xl rotate-2">
-            <img class="w-full h-full object-cover" data-alt="Vista del pueblo de Toral de Merayo"
-              src="fotos/vista_pueblo.jpg" />
+          <div class="photo-card rounded-xl overflow-hidden aspect-[4/4] shadow-xl rotate-2 cursor-pointer"
+            data-src="fotos/vista_pueblo.jpg" data-caption="Vista del pueblo"
+            data-desc="Panorámica del pueblo de Toral de Merayo entre el verde del valle.">
+            <img class="w-full h-full object-cover" src="fotos/vista_pueblo.jpg"
+              alt="Vista del pueblo de Toral de Merayo" />
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">Vista del pueblo</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Foto 3: El Pajariel (circular) -->
         <div class="col-span-12 md:col-span-4 -mt-16">
-          <div class="rounded-full overflow-hidden aspect-square border-8 border-surface-container-high shadow-inner">
-            <img class="w-full h-full object-cover" data-alt="Vista del Pajariel" src="fotos/vista_pajariel.jpg" />
+          <div
+            class="photo-card rounded-full overflow-hidden aspect-square border-8 border-surface-container-high shadow-inner cursor-pointer"
+            data-src="fotos/vista_pajariel.jpg" data-caption="Vista del Pajariel"
+            data-desc="El monte Pajariel preside el horizonte, guardián del paisaje del Bierzo.">
+            <img class="w-full h-full object-cover" src="fotos/vista_pajariel.jpg" alt="Vista del Pajariel" />
+            <div class="photo-overlay photo-overlay--circle">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Pajariel</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Foto 4: Iglesia (grande, 7 columnas) -->
         <div class="col-span-12 md:col-span-7">
-          <div class="rounded-none overflow-hidden aspect-video shadow-2xl">
-            <img class="w-full h-full object-cover" data-alt="Iglesia de El Salvador al atardecer"
-              src="fotos/iglesia_merayo.jpg" />
+          <div class="photo-card rounded-none overflow-hidden aspect-video shadow-2xl cursor-pointer"
+            data-src="fotos/iglesia_merayo.jpg" data-caption="Iglesia de El Salvador"
+            data-desc="La iglesia de El Salvador al atardecer, cuando la luz dorada resalta su piedra y envuelve el entorno en calma.">
+            <img class="w-full h-full object-cover" src="fotos/iglesia_merayo.jpg"
+              alt="Iglesia de El Salvador al atardecer" />
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">Iglesia de El Salvador</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
           </div>
           <div class="mt-8 flex justify-between items-start">
             <p class="font-headline italic text-2xl text-on-surface-variant">Iglesia de El Salvador</p>
@@ -300,9 +340,11 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
               atardecer, cuando la luz dorada resalta su piedra y envuelve el entorno en calma.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+
   <!-- Disponibilidad -->
   <section id="disponibilidad" class="py-32 px-8 bg-background relative overflow-hidden">
     <div class="max-w-7xl mx-auto">
@@ -482,8 +524,12 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
           href="#">Instagram</a>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
           href="#">Facebook</a>
-        <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
-          href="#">Política de privacidad</a>
+        <a
+  href="#"
+  onclick="openPrivacy(event)"
+  class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300">
+  Política de privacidad
+</a>
       </div>
       <div class="flex flex-col justify-between">
         <div>
@@ -498,6 +544,100 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
     </div>
   </footer>
   <script src="main.js" defer></script>
+
+  <!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+  <div id="lightbox" aria-modal="true" role="dialog" aria-label="Foto ampliada">
+    <div id="lightbox-backdrop"></div>
+    <div id="lightbox-container">
+      <button id="lightbox-close" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round">
+          <line x1="3" y1="3" x2="17" y2="17" />
+          <line x1="17" y1="3" x2="3" y2="17" />
+        </svg>
+      </button>
+      <div id="lightbox-img-wrap">
+        <img id="lightbox-img" src="" alt="" />
+      </div>
+      <div id="lightbox-info">
+        <p id="lightbox-caption"></p>
+        <p id="lightbox-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+     PRIVACY POLICY MODAL
+     ============================================================ -->
+  <div id="privacy-modal" role="dialog" aria-modal="true" aria-label="Política de privacidad">
+    <div id="privacy-backdrop"></div>
+    <div id="privacy-panel">
+
+      <div id="privacy-header">
+        <p id="privacy-eyebrow">Las 3 negrillas</p>
+        <h2 id="privacy-title">Política de privacidad</h2>
+        <button id="privacy-close" aria-label="Cerrar">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round">
+            <line x1="3" y1="3" x2="17" y2="17" />
+            <line x1="17" y1="3" x2="3" y2="17" />
+          </svg>
+        </button>
+      </div>
+
+      <div id="privacy-body">
+
+        <p class="privacy-updated">Última actualización: enero de 2026</p>
+
+        <p>En cumplimiento del Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 de Protección de Datos
+          Personales (LOPDGDD), le informamos sobre el tratamiento de sus datos personales.</p>
+
+        <h3>1. Responsable del tratamiento</h3>
+        <p><strong>Denominación:</strong> Las 3 Negrillas<br>
+          <strong>Dirección:</strong> Calle de la barrera de arriba, 3 — 24448, Toral de Merayo, Ponferrada<br>
+          <strong>Contacto:</strong> <a href="mailto:info@las3negrillas.es">info@las3negrillas.es</a>
+        </p>
+
+        <h3>2. Datos que recogemos</h3>
+        <p>Únicamente recogemos los datos que usted nos facilita voluntariamente al realizar una reserva o ponerse en
+          contacto con nosotros:</p>
+        <ul>
+          <li>Nombre y apellidos</li>
+          <li>Dirección de correo electrónico</li>
+          <li>Teléfono de contacto</li>
+          <li>Fechas de estancia solicitadas</li>
+        </ul>
+
+        <h3>3. Finalidad y base jurídica</h3>
+        <p>Sus datos se tratan exclusivamente para gestionar su reserva y atender sus consultas. La base jurídica es la
+          ejecución de un contrato o la aplicación de medidas precontractuales (art. 6.1.b RGPD).</p>
+        <p>No utilizamos sus datos para envíos publicitarios ni los cedemos a terceros salvo obligación legal.</p>
+
+        <h3>4. Plazo de conservación</h3>
+        <p>Conservamos sus datos durante el tiempo necesario para gestionar su reserva y, posteriormente, durante los
+          plazos legales que correspondan (máximo 5 años para obligaciones fiscales y civiles).</p>
+
+        <h3>5. Sus derechos</h3>
+        <p>Puede ejercer en cualquier momento los derechos de <strong>acceso, rectificación, supresión, limitación,
+            portabilidad y oposición</strong> dirigiéndose a la dirección postal o al correo indicado anteriormente,
+          adjuntando copia de su DNI.</p>
+        <p>También tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (<a
+            href="https://www.aepd.es" target="_blank">www.aepd.es</a>).</p>
+
+        <h3>6. Cookies</h3>
+        <p>Este sitio web no utiliza cookies de seguimiento ni analítica de terceros. Únicamente se emplean cookies
+          técnicas estrictamente necesarias para el funcionamiento de la página.</p>
+
+        <h3>7. Seguridad</h3>
+        <p>Aplicamos medidas técnicas y organizativas adecuadas para proteger sus datos frente a accesos no autorizados,
+          pérdida o divulgación accidental.</p>
+
+      </div>
+
+    </div>
+  </div>
 </body>
 
 </html>

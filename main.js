@@ -34,10 +34,83 @@ function initScrollSpy() {
   sections.forEach(section => observer.observe(section));
 }
 
-// ---- Inicialización ----
+/* ── Hover y LIGHTBOX de las fotos del entorno ── */
 function init() {
   initNavClick();
   initScrollSpy();
 }
 
 init();
+
+(function () {
+  const lightbox = document.getElementById('lightbox');
+  const lbBackdrop = document.getElementById('lightbox-backdrop');
+  const lbClose = document.getElementById('lightbox-close');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lightbox-caption');
+  const lbDesc = document.getElementById('lightbox-desc');
+
+  function openLightbox(src, caption, desc) {
+    lbImg.src = src;
+    lbImg.alt = caption;
+    lbCaption.textContent = caption;
+    lbDesc.textContent = desc || '';
+    lightbox.classList.add('is-open');
+    document.body.classList.add('lightbox-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.classList.remove('lightbox-open');
+    // Pequeño delay para limpiar src y evitar flash
+    setTimeout(() => { lbImg.src = ''; }, 300);
+  }
+
+  // Abrir al clicar cualquier .photo-card
+  document.querySelectorAll('.photo-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      openLightbox(
+        card.dataset.src,
+        card.dataset.caption,
+        card.dataset.desc
+      );
+    });
+  });
+
+  // Cerrar con el botón X
+  lbClose.addEventListener('click', closeLightbox);
+
+  // Cerrar al clicar el fondo
+  lbBackdrop.addEventListener('click', closeLightbox);
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+})();
+
+/* Politica de privacidad */
+(function () {
+  const modal = document.getElementById('privacy-modal');
+  const backdrop = document.getElementById('privacy-backdrop');
+  const btnClose = document.getElementById('privacy-close');
+
+  window.openPrivacy = function (e) {
+    if (e) e.preventDefault();
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closePrivacy() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  btnClose.addEventListener('click', closePrivacy);
+  backdrop.addEventListener('click', closePrivacy);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closePrivacy();
+  });
+})();
