@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Las 3 Negrillas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #fff8f5;
+      color: #1f1b18;
+      min-height: 100vh;
+    }
+
+    /* ── Login ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .login-card {
+      background: #fff;
+      border: 1px solid rgba(133,115,108,0.2);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 4px 24px rgba(112,61,35,0.07);
+    }
+
+    .login-card h1 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.75rem;
+      font-style: italic;
+      font-weight: 400;
+      color: #1f1b18;
+      margin-bottom: 0.25rem;
+    }
+
+    .login-card p {
+      font-size: 0.8rem;
+      color: #85736c;
+      margin-bottom: 2rem;
+    }
+
+    .login-card label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #52443d;
+      margin-bottom: 0.5rem;
+    }
+
+    .login-card input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(133,115,108,0.3);
+      border-radius: 0.5rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem;
+      background: #fff8f5;
+      color: #1f1b18;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+
+    .login-card input:focus {
+      border-color: #703d23;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.85rem;
+      background: #703d23;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    .login-error {
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: #ba1a1a;
+      text-align: center;
+      min-height: 1.2em;
+    }
+
+    /* ── App ── */
+    #app-screen { display: none; }
+
+    header.admin-header {
+      background: #fff;
+      border-bottom: 1px solid rgba(133,115,108,0.15);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .admin-header h1 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .btn-logout {
+      background: none;
+      border: 1px solid rgba(133,115,108,0.3);
+      border-radius: 0.5rem;
+      padding: 0.4rem 1rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #52443d;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-logout:hover { background: rgba(133,115,108,0.08); }
+
+    main.admin-main {
+      max-width: 720px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .cal-nav h2 {
+      font-family: 'Newsreader', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .cal-nav button {
+      background: none;
+      border: 1px solid rgba(133,115,108,0.25);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #52443d;
+      transition: background 0.15s;
+    }
+    .cal-nav button:hover { background: rgba(133,115,108,0.1); }
+    .cal-nav button:disabled { opacity: 0.3; pointer-events: none; }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 0.5rem;
+    }
+
+    .cal-weekdays span {
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(82,68,61,0.5);
+      padding: 0.5rem 0;
+    }
+
+    #admin-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .aday {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+
+    .aday--outside { color: rgba(82,68,61,0.2); cursor: default; pointer-events: none; }
+    .aday--past    { color: rgba(82,68,61,0.3); cursor: default; pointer-events: none; }
+
+    .aday--today {
+      background: #703d23;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .aday--free:hover {
+      background: rgba(112,61,35,0.08);
+      border-color: rgba(112,61,35,0.2);
+    }
+
+    .aday--booked {
+      background: rgba(112,61,35,0.15);
+      color: rgba(112,61,35,0.6);
+      text-decoration: line-through;
+      text-decoration-color: rgba(112,61,35,0.4);
+      border-radius: 0;
+    }
+
+    .aday--booked:hover {
+      background: rgba(112,61,35,0.25);
+    }
+
+    .legend {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: #52443d;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; }
+
+    .legend-dot {
+      width: 14px; height: 14px; border-radius: 3px;
+      border: 1px solid rgba(133,115,108,0.3);
+    }
+
+    .legend-dot--booked {
+      background: rgba(112,61,35,0.15);
+      border-color: transparent;
+    }
+
+    .save-bar {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: #fff;
+      border: 1px solid rgba(133,115,108,0.2);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .save-status {
+      font-size: 0.8rem;
+      color: #52443d;
+    }
+
+    .save-status.ok   { color: #2e7d32; }
+    .save-status.err  { color: #ba1a1a; }
+
+    .btn-save {
+      padding: 0.65rem 1.75rem;
+      background: #703d23;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-save:hover    { opacity: 0.88; }
+    .btn-save:disabled { opacity: 0.5; cursor: default; }
+
+    .hint {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: #85736c;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Pantalla de login ── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <h1>Las 3 Negrillas</h1>
+      <p>Panel de administración</p>
+      <label for="pwd">Contraseña</label>
+      <input type="password" id="pwd" placeholder="••••••••" autocomplete="current-password" />
+      <button class="btn-primary" id="btn-login">Entrar</button>
+      <p class="login-error" id="login-error"></p>
+    </div>
+  </div>
+
+  <!-- ── App ── -->
+  <div id="app-screen">
+    <header class="admin-header">
+      <h1>Gestión de disponibilidad</h1>
+      <button class="btn-logout" id="btn-logout">Cerrar sesión</button>
+    </header>
+
+    <main class="admin-main">
+      <div class="cal-nav">
+        <button id="adm-prev" aria-label="Mes anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+        </button>
+        <h2 id="adm-title"></h2>
+        <button id="adm-next" aria-label="Mes siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></svg>
+        </button>
+      </div>
+
+      <div class="cal-weekdays">
+        <span>Lun</span><span>Mar</span><span>Mié</span>
+        <span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+      </div>
+
+      <div id="admin-grid"></div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot"></div> Disponible
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot legend-dot--booked"></div> Reservado
+        </div>
+      </div>
+
+      <div class="save-bar">
+        <span class="save-status" id="save-status">Haz clic en un día para marcarlo como reservado o libre.</span>
+        <button class="btn-save" id="btn-save">Guardar cambios</button>
+      </div>
+
+      <p class="hint">💡 Los cambios no se guardan hasta que pulses <strong>Guardar cambios</strong>. El calendario de la web se actualizará al instante.</p>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initializeApp }                              from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc }          from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+    // ── Misma config que main.js ──────────────────────────────
+    const firebaseConfig = {
+      apiKey:            "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
+      authDomain:        "las-tres-llas.firebaseapp.com",
+      projectId:         "las-tres-llas",
+      storageBucket:     "las-tres-llas.firebasestorage.app",
+      messagingSenderId: "861346331198",
+      appId:             "1:861346331198:web:71202d921e3bf97fb32f6f",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    // ── Contraseña local (solo protege la UI, no Firebase) ───
+    // Cámbiala por la que quieras
+    const ADMIN_PASSWORD = "negrillas2026";
+
+    // ── Login ─────────────────────────────────────────────────
+    const loginScreen = document.getElementById('login-screen');
+    const appScreen   = document.getElementById('app-screen');
+    const loginError  = document.getElementById('login-error');
+
+    document.getElementById('btn-login').addEventListener('click', () => {
+      const pwd = document.getElementById('pwd').value;
+      if (pwd === ADMIN_PASSWORD) {
+        loginScreen.style.display = 'none';
+        appScreen.style.display   = 'block';
+        loadAndRender();
+      } else {
+        loginError.textContent = 'Contraseña incorrecta.';
+      }
+    });
+
+    document.getElementById('pwd').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') document.getElementById('btn-login').click();
+    });
+
+    document.getElementById('btn-logout').addEventListener('click', () => {
+      loginScreen.style.display = '';
+      appScreen.style.display   = 'none';
+      document.getElementById('pwd').value = '';
+    });
+
+    // ── Calendario ────────────────────────────────────────────
+    const MONTHS_ES = [
+      "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+      "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+    ];
+
+    const today     = new Date();
+    const YEAR_MIN  = today.getFullYear();
+    const MONTH_MIN = today.getMonth();
+    const YEAR_MAX  = YEAR_MIN + 40;
+
+    let currentYear  = YEAR_MIN;
+    let currentMonth = MONTH_MIN;
+    let bookedSet    = new Set();   // estado en Firebase
+    let pendingSet   = new Set();   // cambios pendientes de guardar
+
+    function toISO(year, month, day) {
+      return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    }
+
+    async function loadAndRender() {
+      const ref  = doc(db, "reservas", "fechas");
+      const snap = await getDoc(ref);
+      bookedSet  = snap.exists() ? new Set(snap.data().ocupadas || []) : new Set();
+      pendingSet = new Set(bookedSet);
+      renderAdmin();
+    }
+
+    function renderAdmin() {
+      const grid    = document.getElementById('admin-grid');
+      const title   = document.getElementById('adm-title');
+      const btnPrev = document.getElementById('adm-prev');
+      const btnNext = document.getElementById('adm-next');
+
+      title.textContent = `${MONTHS_ES[currentMonth]} ${currentYear}`;
+
+      const isMin = currentYear === YEAR_MIN && currentMonth === MONTH_MIN;
+      const isMax = currentYear === YEAR_MAX && currentMonth === 11;
+      btnPrev.disabled = isMin;
+      btnNext.disabled = isMax;
+
+      const firstDow    = new Date(currentYear, currentMonth, 1).getDay();
+      const startOffset = firstDow === 0 ? 6 : firstDow - 1;
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+      const daysInPrev  = new Date(currentYear, currentMonth, 0).getDate();
+      const todayISO    = toISO(today.getFullYear(), today.getMonth(), today.getDate());
+
+      grid.innerHTML = '';
+
+      // Relleno inicio
+      for (let i = startOffset - 1; i >= 0; i--) {
+        const cell = document.createElement('div');
+        cell.className = 'aday aday--outside';
+        cell.textContent = daysInPrev - i;
+        grid.appendChild(cell);
+      }
+
+      // Días del mes
+      for (let d = 1; d <= daysInMonth; d++) {
+        const iso     = toISO(currentYear, currentMonth, d);
+        const isPast  = iso < todayISO;
+        const isToday = iso === todayISO;
+        const booked  = pendingSet.has(iso);
+
+        let cls = 'aday';
+        if (isPast)        cls += ' aday--past';
+        else if (isToday)  cls += ' aday--today';
+        else if (booked)   cls += ' aday--booked';
+        else               cls += ' aday--free';
+
+        const cell = document.createElement('div');
+        cell.className = cls;
+        cell.textContent = d;
+
+        if (!isPast) {
+          cell.addEventListener('click', () => toggleDay(iso, cell));
+        }
+
+        grid.appendChild(cell);
+      }
+
+      // Relleno final
+      const remaining = grid.children.length % 7 === 0 ? 0 : 7 - (grid.children.length % 7);
+      for (let d = 1; d <= remaining; d++) {
+        const cell = document.createElement('div');
+        cell.className = 'aday aday--outside';
+        cell.textContent = d;
+        grid.appendChild(cell);
+      }
+
+      updateSaveStatus();
+    }
+
+    function toggleDay(iso, cell) {
+      if (pendingSet.has(iso)) {
+        pendingSet.delete(iso);
+        // Si era hoy, restaurar estilo de hoy
+        const todayISO = toISO(today.getFullYear(), today.getMonth(), today.getDate());
+        cell.className = iso === todayISO ? 'aday aday--today' : 'aday aday--free';
+      } else {
+        pendingSet.add(iso);
+        cell.className = 'aday aday--booked';
+      }
+      updateSaveStatus();
+    }
+
+    function updateSaveStatus() {
+      const status  = document.getElementById('save-status');
+      const btnSave = document.getElementById('btn-save');
+      const changed = [...pendingSet].some(d => !bookedSet.has(d)) ||
+                      [...bookedSet].some(d => !pendingSet.has(d));
+
+      if (changed) {
+        status.textContent = 'Tienes cambios sin guardar.';
+        status.className   = 'save-status';
+        btnSave.disabled   = false;
+      } else {
+        status.textContent = 'Todo guardado.';
+        status.className   = 'save-status ok';
+        btnSave.disabled   = true;
+      }
+    }
+
+    document.getElementById('btn-save').addEventListener('click', async () => {
+      const btnSave = document.getElementById('btn-save');
+      const status  = document.getElementById('save-status');
+      btnSave.disabled   = true;
+      status.textContent = 'Guardando…';
+      status.className   = 'save-status';
+
+      try {
+        const ref = doc(db, "reservas", "fechas");
+        await setDoc(ref, { ocupadas: [...pendingSet].sort() });
+        bookedSet = new Set(pendingSet);
+        status.textContent = '✓ Cambios guardados correctamente.';
+        status.className   = 'save-status ok';
+      } catch (err) {
+        status.textContent = 'Error al guardar. Comprueba la conexión.';
+        status.className   = 'save-status err';
+        btnSave.disabled   = false;
+        console.error(err);
+      }
+    });
+
+    document.getElementById('adm-prev').addEventListener('click', () => {
+      if (--currentMonth < 0) { currentMonth = 11; currentYear--; }
+      renderAdmin();
+    });
+
+    document.getElementById('adm-next').addEventListener('click', () => {
+      if (++currentMonth > 11) { currentMonth = 0; currentYear++; }
+      renderAdmin();
+    });
+  </script>
+</body>
+</html>

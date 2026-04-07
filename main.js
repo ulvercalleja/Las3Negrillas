@@ -1,8 +1,28 @@
-// ---- Estado de navegación ----
+// ============================================================
+//  CONFIGURACIÓN FIREBASE
+//  Sustituye estos valores por los tuyos de Firebase Console
+// ============================================================
+import { initializeApp }                         from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot }         from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey:            "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
+  authDomain:        "las-tres-llas.firebaseapp.com",
+  projectId:         "las-tres-llas",
+  storageBucket:     "las-tres-llas.firebasestorage.app",
+  messagingSenderId: "861346331198",
+  appId:             "1:861346331198:web:71202d921e3bf97fb32f6f",
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ============================================================
+//  ESTADO DE NAVEGACIÓN
+// ============================================================
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('header[id], section[id]');
 
-// Mueve el estado activo al enlace recibido
 function setActiveLink(activeLink) {
   navLinks.forEach(l => {
     l.classList.remove('nav-active');
@@ -12,14 +32,12 @@ function setActiveLink(activeLink) {
   activeLink.classList.add('nav-active');
 }
 
-// Escucha el click en cada enlace y activa el que se ha pulsado
 function initNavClick() {
   navLinks.forEach(link => {
     link.addEventListener('click', () => setActiveLink(link));
   });
 }
 
-// Activa el enlace del nav según la sección visible en pantalla
 function initScrollSpy() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -29,26 +47,26 @@ function initScrollSpy() {
         if (activeLink) setActiveLink(activeLink);
       }
     });
-  }, { rootMargin: '-40% 0px -55% 0px' }); // franja central de la pantalla
-
+  }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(section => observer.observe(section));
 }
 
-/* ── Hover y LIGHTBOX de las fotos del entorno ── */
 function init() {
   initNavClick();
   initScrollSpy();
 }
-
 init();
 
+// ============================================================
+//  LIGHTBOX
+// ============================================================
 (function () {
-  const lightbox = document.getElementById('lightbox');
+  const lightbox   = document.getElementById('lightbox');
   const lbBackdrop = document.getElementById('lightbox-backdrop');
-  const lbClose = document.getElementById('lightbox-close');
-  const lbImg = document.getElementById('lightbox-img');
-  const lbCaption = document.getElementById('lightbox-caption');
-  const lbDesc = document.getElementById('lightbox-desc');
+  const lbClose    = document.getElementById('lightbox-close');
+  const lbImg      = document.getElementById('lightbox-img');
+  const lbCaption  = document.getElementById('lightbox-caption');
+  const lbDesc     = document.getElementById('lightbox-desc');
 
   function openLightbox(src, caption, desc) {
     lbImg.src = src;
@@ -62,38 +80,27 @@ init();
   function closeLightbox() {
     lightbox.classList.remove('is-open');
     document.body.classList.remove('lightbox-open');
-    // Pequeño delay para limpiar src y evitar flash
     setTimeout(() => { lbImg.src = ''; }, 300);
   }
 
-  // Abrir al clicar cualquier .photo-card
   document.querySelectorAll('.photo-card').forEach(function (card) {
     card.addEventListener('click', function () {
-      openLightbox(
-        card.dataset.src,
-        card.dataset.caption,
-        card.dataset.desc
-      );
+      openLightbox(card.dataset.src, card.dataset.caption, card.dataset.desc);
     });
   });
 
-  // Cerrar con el botón X
   lbClose.addEventListener('click', closeLightbox);
-
-  // Cerrar al clicar el fondo
   lbBackdrop.addEventListener('click', closeLightbox);
-
-  // Cerrar con Escape
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
-      closeLightbox();
-    }
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
   });
 })();
 
-/* Politica de privacidad */
+// ============================================================
+//  POLÍTICA DE PRIVACIDAD
+// ============================================================
 (function () {
-  const modal = document.getElementById('privacy-modal');
+  const modal    = document.getElementById('privacy-modal');
   const backdrop = document.getElementById('privacy-backdrop');
   const btnClose = document.getElementById('privacy-close');
 
@@ -114,30 +121,25 @@ init();
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closePrivacy();
   });
 })();
-/* ── Calendario de disponibilidad ── */
+
+// ============================================================
+//  CALENDARIO — lee fechas reservadas desde Firebase
+// ============================================================
 (function () {
 
-  // ── Define aquí las fechas reservadas ──────────────────────
-  // Formato ISO: "YYYY-MM-DD"
-  const BOOKED_DATES = [
-    "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15",
-    "2026-04-23", "2026-04-24",
-  ];
-
-  const bookedSet = new Set(BOOKED_DATES);
-
   const MONTHS_ES = [
-    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
   ];
 
-  const today = new Date();
+  const today     = new Date();
   const YEAR_MIN  = today.getFullYear();
   const MONTH_MIN = today.getMonth();
   const YEAR_MAX  = YEAR_MIN + 40;
 
   let currentYear  = YEAR_MIN;
   let currentMonth = MONTH_MIN;
+  let bookedSet    = new Set();
 
   function toISO(year, month, day) {
     return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -155,21 +157,20 @@ init();
     const isMinMonth = currentYear === YEAR_MIN && currentMonth === MONTH_MIN;
     const isMaxMonth = currentYear === YEAR_MAX && currentMonth === 11;
     btnPrev.disabled = isMinMonth;
-    btnPrev.style.opacity = isMinMonth ? '0.3' : '';
+    btnPrev.style.opacity       = isMinMonth ? '0.3' : '';
     btnPrev.style.pointerEvents = isMinMonth ? 'none' : '';
     btnNext.disabled = isMaxMonth;
-    btnNext.style.opacity = isMaxMonth ? '0.3' : '';
+    btnNext.style.opacity       = isMaxMonth ? '0.3' : '';
     btnNext.style.pointerEvents = isMaxMonth ? 'none' : '';
 
-    const firstDow   = new Date(currentYear, currentMonth, 1).getDay();
-    const startOffset = (firstDow === 0) ? 6 : firstDow - 1;
+    const firstDow    = new Date(currentYear, currentMonth, 1).getDay();
+    const startOffset = firstDow === 0 ? 6 : firstDow - 1;
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
     const daysInPrev  = new Date(currentYear, currentMonth, 0).getDate();
     const todayISO    = toISO(today.getFullYear(), today.getMonth(), today.getDate());
 
     grid.innerHTML = '';
 
-    // Días del mes anterior (relleno)
     for (let i = startOffset - 1; i >= 0; i--) {
       const cell = document.createElement('div');
       cell.className = 'cal-day cal-day--outside';
@@ -177,9 +178,8 @@ init();
       grid.appendChild(cell);
     }
 
-    // Días del mes actual
     for (let d = 1; d <= daysInMonth; d++) {
-      const iso    = toISO(currentYear, currentMonth, d);
+      const iso      = toISO(currentYear, currentMonth, d);
       const isPast   = iso < todayISO;
       const isToday  = iso === todayISO;
       const isBooked = bookedSet.has(iso);
@@ -196,9 +196,7 @@ init();
       grid.appendChild(cell);
     }
 
-    // Días del mes siguiente (relleno)
-    const totalCells = grid.children.length;
-    const remaining  = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+    const remaining = grid.children.length % 7 === 0 ? 0 : 7 - (grid.children.length % 7);
     for (let d = 1; d <= remaining; d++) {
       const cell = document.createElement('div');
       cell.className = 'cal-day cal-day--outside';
@@ -209,41 +207,37 @@ init();
 
   function prevMonth() {
     if (currentYear === YEAR_MIN && currentMonth === MONTH_MIN) return;
-    currentMonth--;
-    if (currentMonth < 0) { currentMonth = 11; currentYear--; }
+    if (--currentMonth < 0) { currentMonth = 11; currentYear--; }
     renderCalendar();
   }
 
   function nextMonth() {
     if (currentYear === YEAR_MAX && currentMonth === 11) return;
-    currentMonth++;
-    if (currentMonth > 11) { currentMonth = 0; currentYear++; }
+    if (++currentMonth > 11) { currentMonth = 0; currentYear++; }
     renderCalendar();
   }
 
   function initCalendar() {
-  const prev = document.getElementById('cal-prev');
-  const next = document.getElementById('cal-next');
-  const grid = document.getElementById('cal-grid');
-  const title = document.getElementById('cal-title');
+    document.getElementById('cal-prev').addEventListener('click', prevMonth);
+    document.getElementById('cal-next').addEventListener('click', nextMonth);
 
-  if (!prev || !next || !grid || !title) {
-    console.warn("Calendario no encontrado en esta página");
-    return;
+    // Renderiza inmediatamente mientras Firebase carga
+    renderCalendar();
+
+    // Escucha cambios en Firestore en tiempo real
+    const ref = doc(db, "reservas", "fechas");
+    onSnapshot(ref, (snap) => {
+      bookedSet = snap.exists() ? new Set(snap.data().ocupadas || []) : new Set();
+      renderCalendar();
+    }, (error) => {
+      console.warn("Firebase no disponible:", error);
+    });
   }
 
-  prev.addEventListener('click', prevMonth);
-  next.addEventListener('click', nextMonth);
-
-  renderCalendar();
-
-  const ref = doc(db, "reservas", "fechas");
-  onSnapshot(ref, (snap) => {
-    bookedSet = snap.exists() ? new Set(snap.data().ocupadas || []) : new Set();
-    renderCalendar();
-  });
-}
-
-  window.addEventListener('load', initCalendar);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalendar);
+  } else {
+    initCalendar();
+  }
 
 })();
