@@ -359,3 +359,57 @@ html { /* El desplazamiento scrolleando se vuelve mas suave */
     from { opacity: 0; transform: scale(0.95) translateY(10px); }
     to   { opacity: 1; transform: scale(1) translateY(0); }
   }
+/* ============================================================
+   Calendario de disponibilidad (custom, sin Cally)
+   ============================================================ */
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+/* Días disponibles (futuros, no reservados) */
+.cal-day--free {
+  color: #1f1b18;
+  cursor: default;
+}
+
+/* Día de hoy */
+.cal-day--today {
+  background: #703d23;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Días pasados */
+.cal-day--past {
+  color: rgba(82, 68, 61, 0.3);
+}
+
+/* Días reservados */
+.cal-day--booked {
+  background: rgba(112, 61, 35, 0.12);
+  color: rgba(112, 61, 35, 0.5);
+  text-decoration: line-through;
+  text-decoration-color: rgba(112, 61, 35, 0.35);
+  border-radius: 0;
+}
+
+/* Días de otros meses (relleno) */
+.cal-day--outside {
+  color: rgba(82, 68, 61, 0.2);
+}
+
+/* Cuadrado de leyenda "Reservado" */
+.cal-day-booked {
+  background: rgba(112, 61, 35, 0.12);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+}

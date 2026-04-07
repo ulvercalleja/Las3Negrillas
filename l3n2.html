@@ -354,155 +354,61 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
         </p>
       </div>
       <div class="flex justify-center items-start">
-        <!-- Calendario -->
-        <div
-          class="w-full max-w-4xl bg-surface-container-low p-8 md:p-12 rounded-xl shadow-sm border border-outline-variant/30">
+        <!-- Calendario dinámico -->
+        <div id="cal-wrapper"
+          class="w-full max-w-lg bg-surface-container-low p-8 md:p-10 rounded-xl shadow-sm border border-outline-variant/30">
+
+          <!-- Cabecera: mes/año + flechas -->
           <div class="flex items-center justify-between mb-8">
-            <h4 class="font-headline text-2xl italic">Abril 2026</h4>
-            <div class="flex gap-4">
-              <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span
-                  class="material-symbols-outlined">chevron_left</span></button>
-              <button class="p-2 hover:bg-surface-container rounded-full transition-colors"><span
-                  class="material-symbols-outlined">chevron_right</span></button>
+            <h4 id="cal-title" class="font-headline text-2xl italic"></h4>
+            <div class="flex gap-2">
+              <button id="cal-prev" aria-label="Mes anterior"
+                class="p-2 hover:bg-surface-container rounded-full transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <path d="M15.75 19.5 8.25 12l7.5-7.5"/>
+                </svg>
+              </button>
+              <button id="cal-next" aria-label="Mes siguiente"
+                class="p-2 hover:bg-surface-container rounded-full transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                  <path d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                </svg>
+              </button>
             </div>
           </div>
-          <div class="grid grid-cols-7 mb-4">
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Lun</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Mar</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Mie</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Jue</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Vie</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Sab</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
-              Dom</div>
+
+          <!-- Días de la semana -->
+          <div class="grid grid-cols-7 mb-2">
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Lun</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Mar</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Mié</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Jue</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Vie</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Sáb</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Dom</div>
           </div>
-          <div class="grid grid-cols-7 gap-2">
-            <!-- Mes previo (Placeholder) -->
-            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">
-              30</div>
-            <!-- Mes actual -->
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              1</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              2</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              3</div>
-            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
-              4</div>
-            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
-              5</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              6</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              7</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              8</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              9</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              10</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              11</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm bg-primary text-on-primary rounded-lg shadow-md ring-2 ring-primary ring-offset-2 ring-offset-surface-container-low font-bold">
-              12</div>
-            <div class="aspect-square flex items-center justify-center text-sm bg-primary/20 text-primary font-medium">
-              13</div>
-            <div class="aspect-square flex items-center justify-center text-sm bg-primary/20 text-primary font-medium">
-              14</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm bg-primary text-on-primary rounded-lg shadow-md ring-2 ring-primary ring-offset-2 ring-offset-surface-container-low font-bold">
-              15</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              16</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              17</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              18</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              19</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              20</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              21</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              22</div>
-            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
-              23</div>
-            <div class="aspect-square flex items-center justify-center text-sm text-on-surface-variant/30 line-through">
-              24</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              25</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              26</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              27</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              28</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              29</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              30</div>
-            <div
-              class="aspect-square flex items-center justify-center text-sm hover:bg-surface-container rounded-lg cursor-pointer transition-colors">
-              31</div>
-            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">1
-            </div>
-            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">2
-            </div>
-            <div class="aspect-square flex items-center justify-center text-on-surface-variant/20 text-sm">3
-            </div>
-          </div>
+
+          <!-- Grid de días (generado por JS) -->
+          <div id="cal-grid" class="grid grid-cols-7 gap-1"></div>
+
+          <!-- Leyenda -->
           <div class="mt-8 flex flex-wrap gap-8 justify-center border-t border-outline-variant/30 pt-6">
             <div class="flex items-center gap-3">
               <div class="w-4 h-4 rounded bg-surface-container border border-outline-variant/30"></div>
               <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Disponible</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="w-4 h-4 rounded bg-transparent border border-outline-variant/30 relative overflow-hidden">
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-full h-px bg-on-surface-variant/30 -rotate-45"></div>
-                </div>
-              </div>
+              <div class="w-4 h-4 rounded cal-day-booked"></div>
               <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60">Reservado</span>
             </div>
-
           </div>
+
           <!-- Info -->
-          <div
-            class="mt-8 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
-            <span class="material-symbols-outlined text-primary text-base inline-block align-middle mr-2"
-              data-icon="info">info</span>
-            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta sobre fechas o reservas,
-            no dudes en contactarnos.
+          <div class="mt-6 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
+            <span class="material-symbols-outlined text-primary text-base inline-block align-middle mr-2">info</span>
+            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta, no dudes en contactarnos.
           </div>
         </div>
       </div>
@@ -524,12 +430,10 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
           href="#">Instagram</a>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
           href="#">Facebook</a>
-        <a
-  href="#"
-  onclick="openPrivacy(event)"
-  class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300">
-  Política de privacidad
-</a>
+        <a href="#" onclick="openPrivacy(event)"
+          class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300">
+          Política de privacidad
+        </a>
       </div>
       <div class="flex flex-col justify-between">
         <div>
@@ -597,7 +501,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
         <h3>1. Responsable del tratamiento</h3>
         <p><strong>Denominación:</strong> Las 3 Negrillas<br>
           <strong>Dirección:</strong> Calle de la barrera de arriba, 3 — 24448, Toral de Merayo, Ponferrada<br>
-          <strong>Contacto:</strong> <a href="mailto:info@las3negrillas.es">info@las3negrillas.es</a>
+          <strong>Contacto:</strong> <a href="/cdn-cgi/l/email-protection#e28b8c848da28e8391d18c8785908b8e8e8391cc8791"><span class="__cf_email__" data-cfemail="274e494148674b465414494240554e4b4b4654094254">[email&#160;protected]</span></a>
         </p>
 
         <h3>2. Datos que recogemos</h3>
@@ -631,13 +535,4 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
           técnicas estrictamente necesarias para el funcionamiento de la página.</p>
 
         <h3>7. Seguridad</h3>
-        <p>Aplicamos medidas técnicas y organizativas adecuadas para proteger sus datos frente a accesos no autorizados,
-          pérdida o divulgación accidental.</p>
-
-      </div>
-
-    </div>
-  </div>
-</body>
-
-</html>
+        <p>Aplicamos medidas técnicas y organizativas adecuadas para proteger sus datos fren
