@@ -303,9 +303,24 @@ init();
 //  MODAL DE CONTACTO
 // ============================================================
 (function () {
-  const modal = document.getElementById('contact-modal');
+  const modal    = document.getElementById('contact-modal');
   const backdrop = document.getElementById('contact-backdrop');
   const btnClose = document.getElementById('contact-close');
+
+  // Construir email por JS para evitar ofuscación de Cloudflare
+  const em = ['jcmerayo', 'gmail.com'].join('@');
+  const display = document.getElementById('contact-email-display');
+  if (display) display.textContent = em;
+
+  const copyBtn = document.getElementById('contact-copy-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(em).then(() => {
+        copyBtn.title = '¡Copiado!';
+        setTimeout(() => copyBtn.title = 'Copiar correo', 2000);
+      });
+    });
+  }
 
   window.openContact = function () {
     modal.classList.add('is-open');
@@ -317,10 +332,18 @@ init();
     document.body.style.overflow = '';
   }
 
+  // Adjuntar a todos los botones que abren el modal
+  document.querySelectorAll('[data-open-contact]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openContact();
+      if (el.dataset.closeMenu) closeMobileMenu();
+    });
+  });
+
   btnClose.addEventListener('click', closeContact);
   backdrop.addEventListener('click', closeContact);
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeContact();
   });
 })();
-

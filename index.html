@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" sizes="512x512" href="fotos/logos/l3n_pwa_512x512.png">
 
   <link rel="manifest" href="manifest.json">
-  
+
   <!-- Fuentes -->
   <link
     href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
@@ -101,7 +101,8 @@
   <!-- Barra Superior Navegacion -->
   <nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-stone-900/80 backdrop-blur-md">
     <div class="flex justify-between items-center w-full px-5 md:px-8 py-4 md:py-6 max-w-screen-2xl mx-auto">
-      <div class="font-serif text-xl md:text-2xl italic font-semibold text-[#1f1b18] dark:text-[#fff8f5] tracking-tight">
+      <div
+        class="font-serif text-xl md:text-2xl italic font-semibold text-[#1f1b18] dark:text-[#fff8f5] tracking-tight">
         Las 3 negrillas
       </div>
       <div class="hidden md:flex items-center space-x-12">
@@ -119,7 +120,7 @@
       <div class="flex items-center gap-2">
 
         <!-- Contacto (oculto en móvil, visible en md+) -->
-        <button onclick="openContact()"
+        <button data-open-contact
           class="hidden md:block border border-primary text-primary px-6 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:bg-primary hover:text-white transition-all">
           Contacto
         </button>
@@ -148,12 +149,18 @@
     <div id="mobile-menu"
       class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out bg-surface/95 backdrop-blur-md border-t border-outline-variant/20">
       <div class="flex flex-col px-5 py-4 gap-1">
-        <a class="nav-link nav-active mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#home">Home</a>
-        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#habitaciones">Habitaciones</a>
-        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#servicios">Servicios</a>
-        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#entorno">Entorno</a>
-        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#disponibilidad">Disponibilidad</a>
-        <button onclick="openContact(); closeMobileMenu();" class="text-left font-sans tracking-[0.05em] uppercase text-xs py-3 text-primary">Contacto</button>
+        <a class="nav-link nav-active mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20"
+          href="#home">Home</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20"
+          href="#habitaciones">Habitaciones</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20"
+          href="#servicios">Servicios</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20"
+          href="#entorno">Entorno</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20"
+          href="#disponibilidad">Disponibilidad</a>
+        <button data-open-contact data-close-menu="1"
+          class="text-left font-sans tracking-[0.05em] uppercase text-xs py-3 text-primary">Contacto</button>
       </div>
     </div>
   </nav>
@@ -163,7 +170,9 @@
       <img class="w-full h-full object-cover scale-105" data-alt="Old stone rural house with ivy and warm sunset light"
         src="fotos/foto_general.jpg" />
 
-      <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20 md:to-transparent"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20 md:to-transparent">
+      </div>
       <div class="absolute inset-0 grainy-overlay"></div>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-8 w-full">
@@ -450,7 +459,8 @@
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20">
         <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="fireplace">fireplace</span>
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6"
+            data-icon="fireplace">fireplace</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Chimenea tradicional</h4>
           <p class="text-xs text-on-surface-variant">Fuego de leña para las noches más acogedoras</p>
         </div>
@@ -487,7 +497,8 @@
           <p class="text-xs text-on-surface-variant">Espacio de estacionamiento gratuito disponible para huéspedes.</p>
         </div>
         <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="local_parking">shower</span>
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6"
+            data-icon="local_parking">shower</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Baño completo</h4>
           <p class="text-xs text-on-surface-variant">Equipado con ducha, comodidades y todo lo necesario</p>
         </div>
@@ -515,7 +526,8 @@
           </div>
           <div class="mt-4 md:mt-8 flex justify-between items-start">
             <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">Vista del río</p>
-            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">El río que atraviesa el pueblo, un
+            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">El
+              río que atraviesa el pueblo, un
               rincón tranquilo donde el sonido del agua acompaña el paisaje.</p>
           </div>
         </div>
@@ -580,7 +592,8 @@
           </div>
           <div class="mt-4 md:mt-8 flex justify-between items-start">
             <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">Iglesia de El Salvador</p>
-            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">La iglesia de El Salvador al
+            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">La
+              iglesia de El Salvador al
               atardecer, cuando la luz dorada resalta su piedra y envuelve el entorno en calma.</p>
           </div>
         </div>
@@ -669,7 +682,8 @@
   </section>
 
   <!-- Footer -->
-  <footer class="w-full py-12 md:py-16 px-5 md:px-8 mt-12 md:mt-20 bg-[#fbf2ed] dark:bg-stone-950 text-[#703d23] dark:text-[#d7c2ba]">
+  <footer
+    class="w-full py-12 md:py-16 px-5 md:px-8 mt-12 md:mt-20 bg-[#fbf2ed] dark:bg-stone-950 text-[#703d23] dark:text-[#d7c2ba]">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
       <div>
         <div class="font-serif text-xl italic text-[#1f1b18] dark:text-[#fff8f5] mb-6">Las 3 negrillas</div>
@@ -848,7 +862,7 @@
 
           <div class="contact-method-info">
             <span class="contact-method-label">Correo electrónico</span>
-            <span class="contact-method-value select-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd1d8d6dec9dac2d4fbdcd6dad2d795d8d4d6">[email&#160;protected]</a></span>
+            <span class="contact-method-value select-all">jcmerayo@gmail.com</span>
           </div>
 
           <!-- Botón copiar -->
@@ -858,4 +872,14 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
               width="16" height="16">
               <rect x="6" y="6" width="10" height="10" rx="2" />
-              <rect x="3" y="3" width="10" heigh
+              <rect x="3" y="3" width="10" height="10" rx="2" />
+            </svg>
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
