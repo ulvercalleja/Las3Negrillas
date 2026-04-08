@@ -1,0 +1,19 @@
+{
+  "name": "Las 3 Negrillas",
+  "short_name": "Negrillas",
+  "icons": [
+    {
+      "src": "fotos/logos/l3n_android_192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "fotos/logos/l3n_pwa_512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#703d23",
+  "background_color": "#fff8f5",
+  "display": "standalone"
+}

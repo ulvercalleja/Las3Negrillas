@@ -5,6 +5,15 @@
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
+  <title>Las 3 negrillas - Casa rural en El Bierzo</title>
+
+  <link rel="icon" href="fotos/logos/l3n_favicon_32x32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="fotos/logos/l3n_apple_touch_180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="fotos/logos/l3n_android_192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="fotos/logos/l3n_pwa_512x512.png">
+
+  <link rel="manifest" href="manifest.json">
+  
   <!-- Fuentes -->
   <link
     href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap"
@@ -91,8 +100,8 @@
   class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed overflow-x-hidden">
   <!-- Barra Superior Navegacion -->
   <nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-stone-900/80 backdrop-blur-md">
-    <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
-      <div class="font-serif text-2xl italic font-semibold text-[#1f1b18] dark:text-[#fff8f5] tracking-tight">
+    <div class="flex justify-between items-center w-full px-5 md:px-8 py-4 md:py-6 max-w-screen-2xl mx-auto">
+      <div class="font-serif text-xl md:text-2xl italic font-semibold text-[#1f1b18] dark:text-[#fff8f5] tracking-tight">
         Las 3 negrillas
       </div>
       <div class="hidden md:flex items-center space-x-12">
@@ -109,49 +118,71 @@
 
       <div class="flex items-center gap-2">
 
-        <!-- Contacto -->
+        <!-- Contacto (oculto en móvil, visible en md+) -->
         <button onclick="openContact()"
-          class="border border-primary text-primary px-6 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:bg-primary hover:text-white transition-all">
+          class="hidden md:block border border-primary text-primary px-6 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:bg-primary hover:text-white transition-all">
           Contacto
         </button>
 
-        <!-- Reservar -->
+        <!-- Reservar (texto completo en md+, icono en móvil) -->
         <a href="https://www.booking.com/hotel/es/las-tres-negrillas.es.html" target="_blank">
           <button
-            class="bg-primary text-on-primary px-8 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:scale-[0.99] transition-all active:opacity-80 shadow-[0_10px_30px_-15px_rgba(112,61,35,0.3)]">
-            Reservar
+            class="bg-primary text-on-primary px-5 md:px-8 py-2.5 rounded-lg font-label text-xs tracking-widest uppercase hover:scale-[0.99] transition-all active:opacity-80 shadow-[0_10px_30px_-15px_rgba(112,61,35,0.3)]">
+            <span class="hidden md:inline">Reservar</span>
+            <span class="md:hidden">Reservar</span>
           </button>
         </a>
 
+        <!-- Hamburger (solo móvil) -->
+        <button id="nav-hamburger" aria-label="Abrir menú"
+          class="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-[5px] rounded-lg hover:bg-surface-container transition-colors">
+          <span class="hamburger-bar block w-5 h-[1.5px] bg-on-surface transition-all duration-300"></span>
+          <span class="hamburger-bar block w-5 h-[1.5px] bg-on-surface transition-all duration-300"></span>
+          <span class="hamburger-bar block w-5 h-[1.5px] bg-on-surface transition-all duration-300"></span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu"
+      class="md:hidden overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out bg-surface/95 backdrop-blur-md border-t border-outline-variant/20">
+      <div class="flex flex-col px-5 py-4 gap-1">
+        <a class="nav-link nav-active mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#home">Home</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#habitaciones">Habitaciones</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#servicios">Servicios</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#entorno">Entorno</a>
+        <a class="nav-link nav-inactive mobile-nav-link font-sans tracking-[0.05em] uppercase text-xs py-3 border-b border-outline-variant/20" href="#disponibilidad">Disponibilidad</a>
+        <button onclick="openContact(); closeMobileMenu();" class="text-left font-sans tracking-[0.05em] uppercase text-xs py-3 text-primary">Contacto</button>
       </div>
     </div>
   </nav>
   <!-- Hero Seccion -->
-  <header id="home" class="relative min-h-screen flex items-center pt-20">
+  <header id="home" class="relative min-h-screen flex items-center pt-16 md:pt-20">
     <div class="absolute inset-0 z-0 overflow-hidden">
       <img class="w-full h-full object-cover scale-105" data-alt="Old stone rural house with ivy and warm sunset light"
         src="fotos/foto_general.jpg" />
 
-      <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/20 md:to-transparent"></div>
       <div class="absolute inset-0 grainy-overlay"></div>
     </div>
-    <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-8 w-full">
       <div class="max-w-2xl">
 
-        <h1 class="font-headline italic text-6xl md:text-8xl text-on-surface leading-[1.1] mb-8">
+        <h1 class="font-headline italic text-5xl sm:text-6xl md:text-8xl text-on-surface leading-[1.1] mb-6 md:mb-8">
           Escápate al <br /><span class="text-primary-container">Bierzo</span>
         </h1>
-        <p class="font-body text-xl text-on-surface mb-12 max-w-md leading-relaxed">
+        <p class="font-body text-base md:text-xl text-on-surface mb-8 md:mb-12 max-w-md leading-relaxed">
           Redescubre el ritmo de la tierra en nuestro refugio, cuidadosamente integrado en el paisaje único de El
           Bierzo. Rodeado de montañas y la calma auténtica de Toral de Merayo.
         </p>
-        <div class="flex flex-wrap gap-6">
+        <div class="flex flex-col sm:flex-row gap-3 md:gap-6">
           <a href="#disponibilidad"
-            class="bg-primary text-on-primary px-10 py-4 rounded-lg font-label text-sm tracking-widest uppercase hover:bg-primary-container transition-all">
+            class="bg-primary text-on-primary px-8 md:px-10 py-3.5 md:py-4 rounded-lg font-label text-xs tracking-widest uppercase hover:bg-primary-container transition-all text-center">
             Ver disponibilidad
           </a>
           <a href="#entorno"
-            class="bg-white/90 text-primary px-10 py-4 rounded-lg font-label text-sm tracking-widest uppercase hover:bg-white transition-all">
+            class="bg-white/90 text-primary px-8 md:px-10 py-3.5 md:py-4 rounded-lg font-label text-xs tracking-widest uppercase hover:bg-white transition-all text-center">
             Descubrir el entorno
           </a>
         </div>
@@ -159,17 +190,17 @@
     </div>
   </header>
   <!-- Habitaciones Seccion -->
-  <section id="habitaciones" class="py-32 px-8 bg-surface">
+  <section id="habitaciones" class="py-20 md:py-32 px-5 md:px-8 bg-surface">
     <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-4 md:gap-8">
         <div class="max-w-xl">
-          <h2 class="font-headline text-5xl text-on-surface mb-6 italic">Nuestras estancias</h2>
+          <h2 class="font-headline text-4xl md:text-5xl text-on-surface mb-4 md:mb-6 italic">Nuestras estancias</h2>
           <p class="text-on-surface-variant">Espacios pensados para el descanso, donde la piedra, la madera y la luz
             natural crean una experiencia acogedora en plena naturaleza berciana.</p>
         </div>
 
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16">
         <!-- Room 1 -->
         <div class="group">
           <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
@@ -254,7 +285,7 @@
           Mostrar otros rincones
         </p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mt-12 hidden" id="more-rooms">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 mt-12 hidden" id="more-rooms">
 
         <!-- Room 4 -->
         <div class="group">
@@ -408,66 +439,65 @@
       </div>
   </section>
   <!-- Servicios Seccion -->
-  <section id="servicios" class="py-32 bg-surface-container-low relative overflow-hidden">
+  <section id="servicios" class="py-20 md:py-32 bg-surface-container-low relative overflow-hidden">
     <div class="absolute inset-0 grainy-overlay"></div>
-    <div class="max-w-7xl mx-auto px-8 relative z-10">
-      <div class="text-center max-w-xl mx-auto mb-20">
-        <h2 class="font-headline text-5xl italic mb-6">Servicios</h2>
-        <div class="w-16 h-px bg-primary mx-auto mb-6"></div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+      <div class="text-center max-w-xl mx-auto mb-12 md:mb-20">
+        <h2 class="font-headline text-4xl md:text-5xl italic mb-4 md:mb-6">Servicios</h2>
+        <div class="w-16 h-px bg-primary mx-auto mb-4 md:mb-6"></div>
         <p class="text-on-surface-variant font-body">Detalles pensados para que desconectes del ritmo diario y disfrutes
           de la calma del entorno, con el confort y la autenticidad de una casa berciana.</p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-outline-variant/20">
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="fireplace">fireplace</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="fireplace">fireplace</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Chimenea tradicional</h4>
           <p class="text-xs text-on-surface-variant">Fuego de leña para las noches más acogedoras</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="grass">grass</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="grass">grass</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Jardín natural compartido</h4>
           <p class="text-xs text-on-surface-variant">Espacios exteriores rodeados de naturaleza y calma</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="skillet">skillet</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="skillet">skillet</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Cocina de leña y carbón</h4>
           <p class="text-xs text-on-surface-variant">Sabores tradicionales elaborados con fuego lento y productos
             locales</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="wifi">wifi</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="wifi">wifi</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">WiFi disponible</h4>
           <p class="text-xs text-on-surface-variant">Conexión a internet para cuando la necesites.</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="tv">tv</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="tv">tv</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Televisión</h4>
           <p class="text-xs text-on-surface-variant">Diversión y entretenimiento para disfrutar en familia.</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="pets">pets</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="pets">pets</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Mascotas</h4>
           <p class="text-xs text-on-surface-variant">Se admiten bajo petición. Gratis.</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6"
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6"
             data-icon="local_parking">local_parking</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Estacionamiento</h4>
           <p class="text-xs text-on-surface-variant">Espacio de estacionamiento gratuito disponible para huéspedes.</p>
         </div>
-        <div class="bg-surface-container-low p-12 flex flex-col items-center text-center">
-          <span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="local_parking">shower</span>
+        <div class="bg-surface-container-low p-6 md:p-12 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-primary mb-4 md:mb-6" data-icon="local_parking">shower</span>
           <h4 class="font-label text-xs tracking-widest uppercase mb-2">Baño completo</h4>
           <p class="text-xs text-on-surface-variant">Equipado con ducha, comodidades y todo lo necesario</p>
         </div>
       </div>
     </div>
   </section>
-  <!-- El entorno -->
-  <section id="entorno" class="py-32 px-8 overflow-hidden">
+  <section id="entorno" class="py-20 md:py-32 px-5 md:px-8 overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <h2 class="font-headline text-5xl italic mb-16">El entorno</h2>
-      <div class="grid grid-cols-12 gap-8 items-start">
+      <h2 class="font-headline text-4xl md:text-5xl italic mb-10 md:mb-16">El entorno</h2>
+      <div class="grid grid-cols-12 gap-5 md:gap-8 items-start">
 
         <!-- Foto 1: Río (grande, 7 columnas) -->
         <div class="col-span-12 md:col-span-7">
@@ -483,16 +513,16 @@
               </div>
             </div>
           </div>
-          <div class="mt-8 flex justify-between items-start">
-            <p class="font-headline italic text-2xl text-on-surface-variant">Vista del río</p>
-            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">El río que atraviesa el pueblo, un
+          <div class="mt-4 md:mt-8 flex justify-between items-start">
+            <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">Vista del río</p>
+            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">El río que atraviesa el pueblo, un
               rincón tranquilo donde el sonido del agua acompaña el paisaje.</p>
           </div>
         </div>
 
-        <!-- Foto 2: Vista del pueblo (5 columnas, rotada) -->
+        <!-- Foto 2: Vista del pueblo (5 columnas, rotada solo en desktop) -->
         <div class="col-span-12 md:col-span-5 md:pt-32">
-          <div class="photo-card rounded-xl overflow-hidden aspect-[4/4] shadow-xl rotate-2 cursor-pointer"
+          <div class="photo-card rounded-xl overflow-hidden aspect-[4/4] shadow-xl md:rotate-2 cursor-pointer"
             data-src="fotos/vista_pueblo.jpg" data-caption="Vista del pueblo"
             data-desc="Panorámica del pueblo de Toral de Merayo entre el verde del valle.">
             <img class="w-full h-full object-cover" src="fotos/vista_pueblo.jpg"
@@ -504,18 +534,18 @@
               </div>
             </div>
           </div>
-          <div class="mt-8 flex justify-between items-start">
-            <p class="font-headline italic text-2xl text-on-surface-variant">Vista del pueblo</p>
-            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">
+          <div class="mt-4 md:mt-8 flex justify-between items-start">
+            <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">Vista del pueblo</p>
+            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">
               Panorámica del pueblo de Toral de Merayo entre el verde del valle.
             </p>
           </div>
         </div>
 
         <!-- Foto 3: El Pajariel (circular) -->
-        <div class="col-span-12 md:col-span-4 -mt-16">
+        <div class="col-span-6 md:col-span-4 md:-mt-16">
           <div
-            class="photo-card rounded-full overflow-hidden aspect-square border-8 border-surface-container-high shadow-inner cursor-pointer"
+            class="photo-card rounded-full overflow-hidden aspect-square border-4 md:border-8 border-surface-container-high shadow-inner cursor-pointer"
             data-src="fotos/vista_pajariel.jpg" data-caption="Vista del Pajariel"
             data-desc="El monte Pajariel preside el horizonte, guardián del paisaje del Bierzo.">
             <img class="w-full h-full object-cover" src="fotos/vista_pajariel.jpg" alt="Vista del Pajariel" />
@@ -526,9 +556,9 @@
               </div>
             </div>
           </div>
-          <div class="mt-8 text-center max-w-xs mx-auto">
-            <p class="font-headline italic text-2xl text-on-surface-variant">El Pajariel</p>
-            <p class="font-body text-sm text-on-surface-variant/80">
+          <div class="mt-4 md:mt-8 text-center max-w-xs mx-auto">
+            <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">El Pajariel</p>
+            <p class="font-body text-sm text-on-surface-variant/80 hidden sm:block">
               El monte Pajariel preside el horizonte, guardián del paisaje del Bierzo.
             </p>
           </div>
@@ -548,9 +578,9 @@
               </div>
             </div>
           </div>
-          <div class="mt-8 flex justify-between items-start">
-            <p class="font-headline italic text-2xl text-on-surface-variant">Iglesia de El Salvador</p>
-            <p class="font-body text-sm max-w-[250px] text-on-surface-variant/80">La iglesia de El Salvador al
+          <div class="mt-4 md:mt-8 flex justify-between items-start">
+            <p class="font-headline italic text-xl md:text-2xl text-on-surface-variant">Iglesia de El Salvador</p>
+            <p class="font-body text-sm max-w-[200px] md:max-w-[250px] text-on-surface-variant/80 hidden sm:block">La iglesia de El Salvador al
               atardecer, cuando la luz dorada resalta su piedra y envuelve el entorno en calma.</p>
           </div>
         </div>
@@ -560,10 +590,10 @@
   </section>
 
   <!-- Disponibilidad -->
-  <section id="disponibilidad" class="py-32 px-8 bg-background relative overflow-hidden">
+  <section id="disponibilidad" class="py-20 md:py-32 px-5 md:px-8 bg-background relative overflow-hidden">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="font-headline text-5xl italic text-on-surface mb-4">Comprueba las fechas</h2>
+      <div class="text-center mb-10 md:mb-16">
+        <h2 class="font-headline text-4xl md:text-5xl italic text-on-surface mb-4">Comprueba las fechas</h2>
         <p class="text-on-surface-variant font-body">Consulta la disponibilidad y planifica tu escapada al Bierzo.
         </p>
       </div>
@@ -639,7 +669,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="w-full py-16 px-8 mt-20 bg-[#fbf2ed] dark:bg-stone-950 text-[#703d23] dark:text-[#d7c2ba]">
+  <footer class="w-full py-12 md:py-16 px-5 md:px-8 mt-12 md:mt-20 bg-[#fbf2ed] dark:bg-stone-950 text-[#703d23] dark:text-[#d7c2ba]">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
       <div>
         <div class="font-serif text-xl italic text-[#1f1b18] dark:text-[#fff8f5] mb-6">Las 3 negrillas</div>
@@ -818,7 +848,7 @@
 
           <div class="contact-method-info">
             <span class="contact-method-label">Correo electrónico</span>
-            <span class="contact-method-value select-all">jcmerayo@gmail.com</span>
+            <span class="contact-method-value select-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd1d8d6dec9dac2d4fbdcd6dad2d795d8d4d6">[email&#160;protected]</a></span>
           </div>
 
           <!-- Botón copiar -->
@@ -828,14 +858,4 @@
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
               width="16" height="16">
               <rect x="6" y="6" width="10" height="10" rx="2" />
-              <rect x="3" y="3" width="10" height="10" rx="2" />
-            </svg>
-
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-
-</html>
+              <rect x="3" y="3" width="10" heigh

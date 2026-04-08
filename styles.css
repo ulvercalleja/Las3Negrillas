@@ -637,3 +637,53 @@ body.lightbox-open {
   color: #85736c;
   flex-shrink: 0;
 }
+/* ============================================================
+   Menú móvil hamburger
+   ============================================================ */
+
+#mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+#mobile-menu.is-open {
+  max-height: 400px;
+}
+
+.mobile-nav-link {
+  display: block;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Animación de las barras del hamburger */
+#nav-hamburger.is-open .hamburger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+#nav-hamburger.is-open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+#nav-hamburger.is-open .hamburger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mejor tap target en móvil para botones pequeños */
+@media (max-width: 767px) {
+  .cal-day {
+    font-size: 0.8rem;
+  }
+
+  #lightbox-close {
+    top: -2.5rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  #lightbox-img {
+    max-height: 60vh;
+  }
+}

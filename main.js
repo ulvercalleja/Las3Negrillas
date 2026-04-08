@@ -73,10 +73,44 @@ function initMoreRooms() {
   });
 }
 
+function initHamburger() {
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      mobileMenu.classList.add('is-open');
+      hamburger.classList.add('is-open');
+      hamburger.setAttribute('aria-label', 'Cerrar menú');
+    }
+  });
+
+  // Cerrar al hacer clic en un enlace del menú
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+}
+
+window.closeMobileMenu = function () {
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!mobileMenu) return;
+  mobileMenu.classList.remove('is-open');
+  if (hamburger) {
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-label', 'Abrir menú');
+  }
+};
+
 function init() {
   initNavClick();
   initScrollSpy();
   initMoreRooms();
+  initHamburger();
 }
 init();
 
