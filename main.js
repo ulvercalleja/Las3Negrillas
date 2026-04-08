@@ -2,20 +2,20 @@
 //  CONFIGURACIÓN FIREBASE
 //  Sustituye estos valores por los tuyos de Firebase Console
 // ============================================================
-import { initializeApp }                         from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getFirestore, doc, onSnapshot }         from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
-  authDomain:        "las-tres-llas.firebaseapp.com",
-  projectId:         "las-tres-llas",
-  storageBucket:     "las-tres-llas.firebasestorage.app",
+  apiKey: "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
+  authDomain: "las-tres-llas.firebaseapp.com",
+  projectId: "las-tres-llas",
+  storageBucket: "las-tres-llas.firebasestorage.app",
   messagingSenderId: "861346331198",
-  appId:             "1:861346331198:web:71202d921e3bf97fb32f6f",
+  appId: "1:861346331198:web:71202d921e3bf97fb32f6f",
 };
 
 const app = initializeApp(firebaseConfig);
-const db  = getFirestore(app);
+const db = getFirestore(app);
 
 // ============================================================
 //  ESTADO DE NAVEGACIÓN
@@ -84,12 +84,12 @@ init();
 //  LIGHTBOX
 // ============================================================
 (function () {
-  const lightbox   = document.getElementById('lightbox');
+  const lightbox = document.getElementById('lightbox');
   const lbBackdrop = document.getElementById('lightbox-backdrop');
-  const lbClose    = document.getElementById('lightbox-close');
-  const lbImg      = document.getElementById('lightbox-img');
-  const lbCaption  = document.getElementById('lightbox-caption');
-  const lbDesc     = document.getElementById('lightbox-desc');
+  const lbClose = document.getElementById('lightbox-close');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lightbox-caption');
+  const lbDesc = document.getElementById('lightbox-desc');
 
   function openLightbox(src, caption, desc) {
     lbImg.src = src;
@@ -123,7 +123,7 @@ init();
 //  POLÍTICA DE PRIVACIDAD
 // ============================================================
 (function () {
-  const modal    = document.getElementById('privacy-modal');
+  const modal = document.getElementById('privacy-modal');
   const backdrop = document.getElementById('privacy-backdrop');
   const btnClose = document.getElementById('privacy-close');
 
@@ -151,26 +151,26 @@ init();
 (function () {
 
   const MONTHS_ES = [
-    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
-    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
   ];
 
-  const today     = new Date();
-  const YEAR_MIN  = today.getFullYear();
+  const today = new Date();
+  const YEAR_MIN = today.getFullYear();
   const MONTH_MIN = today.getMonth();
-  const YEAR_MAX  = YEAR_MIN + 40;
+  const YEAR_MAX = YEAR_MIN + 40;
 
-  let currentYear  = YEAR_MIN;
+  let currentYear = YEAR_MIN;
   let currentMonth = MONTH_MIN;
-  let bookedSet    = new Set();
+  let bookedSet = new Set();
 
   function toISO(year, month, day) {
     return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
   }
 
   function renderCalendar() {
-    const grid    = document.getElementById('cal-grid');
-    const title   = document.getElementById('cal-title');
+    const grid = document.getElementById('cal-grid');
+    const title = document.getElementById('cal-title');
     const btnPrev = document.getElementById('cal-prev');
     const btnNext = document.getElementById('cal-next');
     if (!grid || !title) return;
@@ -180,17 +180,17 @@ init();
     const isMinMonth = currentYear === YEAR_MIN && currentMonth === MONTH_MIN;
     const isMaxMonth = currentYear === YEAR_MAX && currentMonth === 11;
     btnPrev.disabled = isMinMonth;
-    btnPrev.style.opacity       = isMinMonth ? '0.3' : '';
+    btnPrev.style.opacity = isMinMonth ? '0.3' : '';
     btnPrev.style.pointerEvents = isMinMonth ? 'none' : '';
     btnNext.disabled = isMaxMonth;
-    btnNext.style.opacity       = isMaxMonth ? '0.3' : '';
+    btnNext.style.opacity = isMaxMonth ? '0.3' : '';
     btnNext.style.pointerEvents = isMaxMonth ? 'none' : '';
 
-    const firstDow    = new Date(currentYear, currentMonth, 1).getDay();
+    const firstDow = new Date(currentYear, currentMonth, 1).getDay();
     const startOffset = firstDow === 0 ? 6 : firstDow - 1;
     const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    const daysInPrev  = new Date(currentYear, currentMonth, 0).getDate();
-    const todayISO    = toISO(today.getFullYear(), today.getMonth(), today.getDate());
+    const daysInPrev = new Date(currentYear, currentMonth, 0).getDate();
+    const todayISO = toISO(today.getFullYear(), today.getMonth(), today.getDate());
 
     grid.innerHTML = '';
 
@@ -202,16 +202,16 @@ init();
     }
 
     for (let d = 1; d <= daysInMonth; d++) {
-      const iso      = toISO(currentYear, currentMonth, d);
-      const isPast   = iso < todayISO;
-      const isToday  = iso === todayISO;
+      const iso = toISO(currentYear, currentMonth, d);
+      const isPast = iso < todayISO;
+      const isToday = iso === todayISO;
       const isBooked = bookedSet.has(iso);
 
       let cls = 'cal-day';
-      if (isToday)       cls += ' cal-day--today';
-      else if (isPast)   cls += ' cal-day--past';
+      if (isToday) cls += ' cal-day--today';
+      else if (isPast) cls += ' cal-day--past';
       else if (isBooked) cls += ' cal-day--booked';
-      else               cls += ' cal-day--free';
+      else cls += ' cal-day--free';
 
       const cell = document.createElement('div');
       cell.className = cls;
@@ -263,5 +263,30 @@ init();
     initCalendar();
   }
 
+})();
+
+// ============================================================
+//  MODAL DE CONTACTO
+// ============================================================
+(function () {
+  const modal = document.getElementById('contact-modal');
+  const backdrop = document.getElementById('contact-backdrop');
+  const btnClose = document.getElementById('contact-close');
+
+  window.openContact = function () {
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeContact() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  btnClose.addEventListener('click', closeContact);
+  backdrop.addEventListener('click', closeContact);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeContact();
+  });
 })();
 
