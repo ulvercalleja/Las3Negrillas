@@ -51,9 +51,32 @@ function initScrollSpy() {
   sections.forEach(section => observer.observe(section));
 }
 
+function initMoreRooms() {
+  const btn = document.getElementById('btn-more-rooms');
+  const moreRooms = document.getElementById('more-rooms');
+  const text = document.getElementById('text-more-rooms');
+
+  if (!btn || !moreRooms) return;
+
+  btn.addEventListener('click', () => {
+    const isHidden = moreRooms.classList.contains('hidden');
+
+    if (isHidden) {
+      moreRooms.classList.remove('hidden');
+      btn.textContent = '−';
+      text.textContent = 'Ocultar';
+    } else {
+      moreRooms.classList.add('hidden');
+      btn.textContent = '+';
+      text.textContent = 'Mostrar otros rincones';
+    }
+  });
+}
+
 function init() {
   initNavClick();
   initScrollSpy();
+  initMoreRooms();
 }
 init();
 
@@ -241,3 +264,4 @@ init();
   }
 
 })();
+

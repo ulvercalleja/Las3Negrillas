@@ -155,55 +155,245 @@
           <p class="text-on-surface-variant">Espacios pensados para el descanso, donde la piedra, la madera y la luz
             natural crean una experiencia acogedora en plena naturaleza berciana.</p>
         </div>
-        <a class="font-label text-xs tracking-widest uppercase border-b border-primary pb-2 text-primary" href="#">Ver
-          todas las habitaciones</a>
+
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-16">
         <!-- Room 1 -->
         <div class="group">
-          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-8 relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Habitación 
-rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg" />
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/dormitorio.jpg" data-caption="La Rústica con Encanto"
+            data-desc="Cuarto rústico acogedor con dos camas y ambiente cálido y relajante.">
+
+            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              src="fotos/dormitorio.jpg" alt="Habitación rústica acogedora con dos camas" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">La Rústica con Encanto</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
 
           </div>
+
           <h3 class="font-headline text-2xl mb-3">La Rústica con Encanto</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Cuarto rústico acogedor con dos camas y
-            ambiente cálido y relajante.</p>
-          <button
-            class="text-primary font-label text-xs tracking-widest uppercase flex items-center group-hover:translate-x-2 transition-transform">
-            Detail <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
-          </button>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Cuarto rústico acogedor con dos camas y ambiente cálido y relajante.
+          </p>
         </div>
+
         <!-- Room 2 -->
         <div class="group">
-          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-8 relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              data-alt="Habitación rústica con cama doble, madera y luz cálida." src="fotos/dormitorio2.jpg" />
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/dormitorio2.jpg" data-caption="La Doble Acogedora"
+            data-desc="Habitación rústica con cama doble, madera y luz cálida acogedora y suave.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/dormitorio2.jpg" alt="Habitación rústica con cama doble y ambiente cálido" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">La Doble Acogedora</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
           </div>
+
           <h3 class="font-headline text-2xl mb-3">La Doble Acogedora</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Habitación rústica con cama doble, madera y
-            luz cálida acogedora y suave.</p>
-          <button
-            class="text-primary font-label text-xs tracking-widest uppercase flex items-center group-hover:translate-x-2 transition-transform">
-            Detail <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
-          </button>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Habitación rústica con cama doble, madera y luz cálida acogedora y suave.
+          </p>
         </div>
+
         <!-- Room 3 -->
         <div class="group">
-          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-8 relative">
-            <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              data-alt="Minimalist luxury bedroom with terra cotta floors" src="fotos/dormitorio3.jpg" />
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/dormitorio3.jpg" data-caption="La Twin Clásica"
+            data-desc="Dormitorio acogedor con dos camas individuales y estilo rústico tradicional.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/dormitorio3.jpg" alt="Dormitorio con dos camas individuales y estilo rústico" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">La Twin Clásica</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
           </div>
+
           <h3 class="font-headline text-2xl mb-3">La Twin Clásica</h3>
-          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">Dormitorio acogedor con dos camas
-            individuales y estilo rústico tradicional.</p>
-          <button
-            class="text-primary font-label text-xs tracking-widest uppercase flex items-center group-hover:translate-x-2 transition-transform">
-            Detail <span class="material-symbols-outlined ml-2 text-sm" data-icon="arrow_forward">arrow_forward</span>
-          </button>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Dormitorio acogedor con dos camas individuales y estilo rústico tradicional.
+          </p>
         </div>
       </div>
-    </div>
+      <div class="flex flex-col items-center mt-12">
+
+        <button id="btn-more-rooms" class="text-primary text-5xl hover:scale-110 transition-transform">
+          +
+        </button>
+        <p id="text-more-rooms" class="text-sm text-on-surface-variant tracking-wide ">
+          Mostrar otros rincones
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mt-12 hidden" id="more-rooms">
+
+        <!-- Room 4 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/salon.jpg" data-caption="El Salón con Chimenea"
+            data-desc="Salón con chimenea de piedra, ambiente cálido, decoración rústica y encanto tradicional.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/salon.jpg" alt="Salón rústico con chimenea y ambiente cálido" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Salón con Chimenea</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">El Salón con Chimenea</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Salón con chimenea de piedra, ambiente cálido, decoración rústica y encanto tradicional.
+          </p>
+        </div>
+
+        <!-- Room 5 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/cocina.jpg" data-caption="La Cocina de Carbón"
+            data-desc="Acogedora cocina de carbón tradicional, equipada con detalles rústicos y encanto auténtico.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/cocina.jpg" alt="Cocina rústica con cocina de carbón tradicional" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">La Cocina de Carbón</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">La Cocina de Carbón</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Acogedora cocina de carbón tradicional, equipada con detalles rústicos y encanto auténtico.
+          </p>
+        </div>
+
+        <!-- Room 6 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/comedor.jpg" data-caption="El Comedor de Madera"
+            data-desc="Comedor rústico con mesa de madera maciza, paredes de piedra y cálida iluminación.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/comedor.jpg" alt="Comedor rústico con mesa de madera maciza" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Comedor de Madera</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">El Comedor de Madera</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Comedor rústico con mesa de madera maciza, paredes de piedra y cálida iluminación.
+          </p>
+        </div>
+
+        <!-- Room 7 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/baño.jpg" data-caption="El Baño Rústico"
+            data-desc="Baño completo con ducha, estilo rústico y detalles cálidos.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/baño.jpg" alt="Baño rústico con ducha y detalles acogedores" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Baño Rústico</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">El Baño Rústico</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Baño completo con ducha, estilo rústico y detalles cálidos.
+          </p>
+        </div>
+
+        <!-- Room 8 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/jardin.jpg" data-caption="El Jardín Natural"
+            data-desc="Espacio exterior rodeado de naturaleza, jardín compartido con la vivienda colindante.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/jardin.jpg" alt="Jardín natural con vegetación y entorno tranquilo" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Jardín Natural</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">El Jardín Natural</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Espacio exterior rodeado de naturaleza, jardín compartido con la vivienda colindante.
+          </p>
+        </div>
+
+        <!-- Room 9 -->
+        <div class="group">
+          <div class="photo-card aspect-[4/5] overflow-hidden rounded-xl mb-8 relative cursor-pointer"
+            data-src="fotos/balcon.jpg" data-caption="El Balcón con Vistas"
+            data-desc="Balcón con encanto y vistas al entorno natural.">
+
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="fotos/balcon.jpg" alt="Balcón con vistas al entorno natural" />
+
+            <!-- Overlay -->
+            <div class="photo-overlay">
+              <div class="photo-overlay-content">
+                <p class="photo-overlay-title">El Balcón con Vistas</p>
+                <span class="photo-overlay-hint">Ver foto</span>
+              </div>
+            </div>
+
+          </div>
+
+          <h3 class="font-headline text-2xl mb-3">El Balcón con Vistas</h3>
+          <p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+            Balcón con encanto y vistas al entorno natural.
+          </p>
+        </div>
+      </div>
   </section>
   <!-- Servicios Seccion -->
   <section id="servicios" class="py-32 bg-surface-container-low relative overflow-hidden">
@@ -366,14 +556,14 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
                 class="p-2 hover:bg-surface-container rounded-full transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-                  <path d="M15.75 19.5 8.25 12l7.5-7.5"/>
+                  <path d="M15.75 19.5 8.25 12l7.5-7.5" />
                 </svg>
               </button>
               <button id="cal-next" aria-label="Mes siguiente"
                 class="p-2 hover:bg-surface-container rounded-full transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-                  <path d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                  <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
               </button>
             </div>
@@ -381,13 +571,20 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
 
           <!-- Días de la semana -->
           <div class="grid grid-cols-7 mb-2">
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Lun</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Mar</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Mié</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Jue</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Vie</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Sáb</div>
-            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">Dom</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Lun</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Mar</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Mié</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Jue</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Vie</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Sáb</div>
+            <div class="text-center font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60 py-2">
+              Dom</div>
           </div>
 
           <!-- Grid de días (generado por JS) -->
@@ -406,9 +603,11 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
           </div>
 
           <!-- Info -->
-          <div class="mt-6 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
+          <div
+            class="mt-6 p-4 border border-primary/10 rounded-lg bg-primary/5 italic text-center text-sm text-on-surface-variant leading-relaxed">
             <span class="material-symbols-outlined text-primary text-base inline-block align-middle mr-2">info</span>
-            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta, no dudes en contactarnos.
+            Llegadas a partir de las 15:00. Salidas antes de las 12:00. Para cualquier consulta, no dudes en
+            contactarnos.
           </div>
         </div>
       </div>
@@ -502,7 +701,9 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
         <h3>1. Responsable del tratamiento</h3>
         <p><strong>Denominación:</strong> Las 3 Negrillas<br>
           <strong>Dirección:</strong> Calle de la barrera de arriba, 3 — 24448, Toral de Merayo, Ponferrada<br>
-          <strong>Contacto:</strong> <a href="/cdn-cgi/l/email-protection#e28b8c848da28e8391d18c8785908b8e8e8391cc8791"><span class="__cf_email__" data-cfemail="274e494148674b465414494240554e4b4b4654094254">[email&#160;protected]</span></a>
+          <strong>Contacto:</strong> <a
+            href="/cdn-cgi/l/email-protection#e28b8c848da28e8391d18c8785908b8e8e8391cc8791"><span class="__cf_email__"
+              data-cfemail="274e494148674b465414494240554e4b4b4654094254">[email&#160;protected]</span></a>
         </p>
 
         <h3>2. Datos que recogemos</h3>
@@ -535,7 +736,7 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
         <p>Este sitio web no utiliza cookies de seguimiento ni analítica de terceros. Únicamente se emplean cookies
           técnicas estrictamente necesarias para el funcionamiento de la página.</p>
 
-         <h3>7. Seguridad</h3>
+        <h3>7. Seguridad</h3>
         <p>
           Aplicamos medidas técnicas y organizativas adecuadas para proteger sus datos frente a accesos no autorizados,
           pérdida o alteración de la información.
@@ -546,4 +747,5 @@ rústica acogedora con dos camas y ambiente cálido." src="fotos/dormitorio.jpg"
   </div> <!-- privacy-modal -->
 
 </body>
+
 </html>
