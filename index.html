@@ -617,12 +617,12 @@
           <!-- Leyenda -->
           <div class="mt-8 flex flex-wrap gap-8 justify-center border-t border-outline-variant/30 pt-6">
             <div class="flex items-center gap-3">
-              <div class="w-4 h-4 rounded bg-surface-container border border-outline-variant/30"></div>
-              <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant">Disponible</span>
+              <div class="w-8 h-8 rounded bg-surface-container border border-outline-variant/30"></div>
+              <span class="font-label text-xs tracking-widest uppercase text-on-surface">Disponible</span>
             </div>
             <div class="flex items-center gap-3">
-              <div class="w-4 h-4 rounded cal-day-booked"></div>
-              <span class="font-label text-[10px] tracking-widest uppercase text-on-surface-variant/60">Reservado</span>
+              <div class="w-8 h-8 rounded cal-day-booked"></div>
+              <span class="font-label text-xs tracking-widest uppercase text-on-surface">Reservado</span>
             </div>
           </div>
 
@@ -650,8 +650,8 @@
       </div>
       <div class="flex flex-col space-y-4">
         <h5 class="font-serif text-2xl Newsreader mb-2">Síguenos</h5>
-        <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
-          href="https://wa.me/34616468224" target="_blank">
+        <a href="#" onclick="openContact(); return false;"
+          class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300">
           Contacto
         </a>
         <a class="font-sans text-sm Manrope text-[#1f1b18]/60 dark:text-[#fff8f5]/60 hover:text-[#703d23] transition-transform hover:translate-x-1 duration-300"
@@ -807,7 +807,7 @@
             <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
         </a>
-        <a href="mailto:jcmerayo@gmail.com" class="contact-method">
+        <div class="contact-method cursor-default">
           <div class="contact-method-icon contact-method-icon--email">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"
               stroke-linecap="round" stroke-linejoin="round">
@@ -815,15 +815,24 @@
               <path d="m2 7 10 7 10-7" />
             </svg>
           </div>
+
           <div class="contact-method-info">
             <span class="contact-method-label">Correo electrónico</span>
-            <span class="contact-method-value">jcmerayo@gmail.com</span>
+            <span class="contact-method-value select-all">jcmerayo@gmail.com</span>
           </div>
-          <svg class="contact-method-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" width="16" height="16">
-            <path d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
-        </a>
+
+          <!-- Botón copiar -->
+          <button onclick="navigator.clipboard.writeText('jcmerayo@gmail.com')"
+            class="contact-method-arrow hover:text-primary transition" title="Copiar correo">
+
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              width="16" height="16">
+              <rect x="6" y="6" width="10" height="10" rx="2" />
+              <rect x="3" y="3" width="10" height="10" rx="2" />
+            </svg>
+
+          </button>
+        </div>
       </div>
     </div>
   </div>

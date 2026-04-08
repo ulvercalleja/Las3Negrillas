@@ -409,7 +409,7 @@ body.lightbox-open {
   align-items: center;
   justify-content: center;
   font-family: 'Manrope', sans-serif;
-  font-size: 0.875rem;
+  font-size: 1.075rem;
   border-radius: 0.5rem;
   user-select: none;
 }
@@ -434,8 +434,8 @@ body.lightbox-open {
 
 /* Días reservados */
 .cal-day--booked {
-  background: rgba(112, 61, 35, 0.12);
-  color: rgba(112, 61, 35, 0.5);
+  background: rgba(35, 76, 112, 0.12); /*112, 61, 35, 0.12*/
+  color: rgba(112, 61, 35, 0.5); 
   text-decoration: line-through;
   text-decoration-color: rgba(112, 61, 35, 0.35);
   border-radius: 0;
@@ -448,9 +448,15 @@ body.lightbox-open {
 
 /* Cuadrado de leyenda "Reservado" */
 .cal-day-booked {
-  background: rgba(112, 61, 35, 0.12);
+  background: rgba(35, 76, 112, 0.12); /*112, 61, 35, 0.12*/
   width: 1rem;
   height: 1rem;
+  border-radius: 0.25rem;
+}
+
+.cal-day-free {
+  width: 2rem;
+  height: 2rem;
   border-radius: 0.25rem;
 }
 
