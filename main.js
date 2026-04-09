@@ -34,7 +34,14 @@ function setActiveLink(activeLink) {
 
 function initNavClick() {
   navLinks.forEach(link => {
-    link.addEventListener('click', () => setActiveLink(link));
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      setActiveLink(link);
+      const targetId = link.getAttribute('href').replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname);
+    });
   });
 }
 
@@ -45,6 +52,7 @@ function initScrollSpy() {
         const id = entry.target.getAttribute('id');
         const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
         if (activeLink) setActiveLink(activeLink);
+        history.replaceState(null, '', window.location.pathname);
       }
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
@@ -89,9 +97,16 @@ function initHamburger() {
     }
   });
 
-  // Cerrar al hacer clic en un enlace del menú
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
+  // Cerrar al hacer clic en un enlace del menú e interceptar navegación
+  mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+      const targetId = link.getAttribute('href').replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname);
+    });
   });
 }
 
