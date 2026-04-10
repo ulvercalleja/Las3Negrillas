@@ -361,7 +361,6 @@
       <div style="position: relative;">
         <input type="password" id="pwd" placeholder="••••••••" autocomplete="current-password"
           style="padding-right: 40px;" />
-
         <button type="button" id="toggle-pwd"
           style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer;">
           👁
@@ -425,8 +424,11 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
     import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+    import { getAuth, signInAnonymously, signOut, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+    import { getRemoteConfig, fetchAndActivate, getValue }
+      from "https://www.gstatic.com/firebasejs/12.11.0/firebase-remote-config.js";
 
-    // ── Misma config que main.js ──────────────────────────────
     const firebaseConfig = {
       apiKey: "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
       authDomain: "las-tres-llas.firebaseapp.com",
@@ -436,36 +438,75 @@
       appId: "1:861346331198:web:71202d921e3bf97fb32f6f",
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    const app        = initializeApp(firebaseConfig);
+    const db         = getFirestore(app);
+    const auth       = getAuth(app);
+    const remoteConfig = getRemoteConfig(app);
 
-    // ── Contraseña local (solo protege la UI, no Firebase) ───
-    // Cámbiala por la que quieras
-    const ADMIN_PASSWORD = "negrillas2026";
+    // Mínimo intervalo entre fetches (1 minuto en dev, puedes subir en prod)
+    remoteConfig.settings.minimumFetchIntervalMillis = 60_000;
 
-    // ── Login ─────────────────────────────────────────────────
+    // ── UI ────────────────────────────────────────────────────
     const loginScreen = document.getElementById('login-screen');
-    const appScreen = document.getElementById('app-screen');
-    const loginError = document.getElementById('login-error');
+    const appScreen   = document.getElementById('app-screen');
+    const loginError  = document.getElementById('login-error');
+    const btnLogin    = document.getElementById('btn-login');
 
-    document.getElementById('btn-login').addEventListener('click', () => {
-      const pwd = document.getElementById('pwd').value;
-      if (pwd === ADMIN_PASSWORD) {
+    // Si ya hay sesión activa (recarga de página) muestra el panel directamente
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
         loginScreen.style.display = 'none';
         appScreen.style.display = 'block';
         loadAndRender();
       } else {
-        loginError.textContent = 'Contraseña incorrecta.';
+        loginScreen.style.display = '';
+        appScreen.style.display = 'none';
       }
     });
 
+    // ── Login: compara con Remote Config y abre sesión anónima ──
+    async function doLogin() {
+      const pwd = document.getElementById('pwd').value;
+      loginError.textContent = '';
+      btnLogin.disabled = true;
+      btnLogin.textContent = 'Verificando…';
+
+      try {
+        // Obtiene la contraseña almacenada en Remote Config
+        await fetchAndActivate(remoteConfig);
+        const correctPwd = getValue(remoteConfig, 'admin_password').asString();
+
+        if (!correctPwd) {
+          loginError.textContent = 'Remote Config no configurado. Sigue las instrucciones de instalación.';
+          return;
+        }
+
+        if (pwd !== correctPwd) {
+          loginError.textContent = 'Contraseña incorrecta.';
+          return;
+        }
+
+        // Contraseña correcta → sesión anónima en Firebase
+        await signInAnonymously(auth);
+        // onAuthStateChanged se encarga de mostrar el panel
+
+      } catch (err) {
+        console.error(err);
+        loginError.textContent = 'Error de conexión. Comprueba tu red.';
+      } finally {
+        btnLogin.disabled = false;
+        btnLogin.textContent = 'Entrar';
+      }
+    }
+
+    btnLogin.addEventListener('click', doLogin);
     document.getElementById('pwd').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') document.getElementById('btn-login').click();
+      if (e.key === 'Enter') doLogin();
     });
 
-    const pwdInput = document.getElementById('pwd');
+    // ── Toggle mostrar/ocultar contraseña ────────────────────
+    const pwdInput  = document.getElementById('pwd');
     const toggleBtn = document.getElementById('toggle-pwd');
-
     toggleBtn.addEventListener('click', () => {
       if (pwdInput.type === 'password') {
         pwdInput.type = 'text';
@@ -476,10 +517,9 @@
       }
     });
 
+    // ── Logout ────────────────────────────────────────────────
     document.getElementById('btn-logout').addEventListener('click', () => {
-      loginScreen.style.display = '';
-      appScreen.style.display = 'none';
-      document.getElementById('pwd').value = '';
+      signOut(auth);
     });
 
     // ── Calendario ────────────────────────────────────────────
