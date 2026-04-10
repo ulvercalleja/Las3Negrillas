@@ -6,7 +6,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/fireba
 import { getFirestore, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78",
+  apiKey: "AIzaSyCZbPUbUZnypUVCCIabY35q18mhiilbf78", // ¡Esta clave solo funciona en este dominio!
   authDomain: "las-tres-llas.firebaseapp.com",
   projectId: "las-tres-llas",
   storageBucket: "las-tres-llas.firebasestorage.app",
@@ -16,6 +16,19 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
+// ============================================================
+//  INTERCEPTOR GLOBAL DE ANCHORS — evita que aparezca # en la URL
+// ============================================================
+document.addEventListener('click', function (e) {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  e.preventDefault();
+  const targetId = link.getAttribute('href').replace('#', '');
+  const target = document.getElementById(targetId);
+  if (target) target.scrollIntoView({ behavior: 'smooth' });
+  history.replaceState(null, '', window.location.pathname);
+});
 
 // ============================================================
 //  ESTADO DE NAVEGACIÓN
